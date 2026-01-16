@@ -1,7 +1,7 @@
----
 // -- api endpoint for fetching articles (htmx compatible)
 import type { APIRoute } from 'astro';
-import { getPaginatedArticles, type Article } from '../../lib/articles';
+import { getPaginatedArticles } from '../../lib/articles';
+import type { Article } from '../../lib/articles';
 
 // -- generate article card html for htmx responses
 function generateArticleCardHtml(article: Article, featured: boolean = false): string {
@@ -17,6 +17,7 @@ function generateArticleCardHtml(article: Article, featured: boolean = false): s
   const getCategoryColor = (cat: string) => {
     const colors: Record<string, string> = {
       technology: 'category-tech',
+      topics: 'category-topics',
       science: 'category-science',
       business: 'category-business',
       culture: 'category-culture',
