@@ -1,0 +1,354 @@
+---
+// -- navigation bar component
+import { Menu, X, Search, Rss, Newspaper, Cpu, Globe, BookOpen } from 'lucide-astro';
+
+interface NavLink {
+  label: string;
+  href: string;
+  icon?: string;
+}
+
+const navLinks: NavLink[] = [
+  { label: 'Home', href: '/' },
+  { label: 'News', href: '/news' },
+  { label: 'Technology', href: '/news?category=technology' },
+  { label: 'Topics', href: '/news?category=topics' },
+];
+---
+
+<header class="navbar">
+  <div class="navbar-container">
+    <!-- -- logo and brand -->
+    <a href="/" class="navbar-brand" aria-label="News Hub Home">
+      <div class="brand-icon">
+        <Newspaper size={28} strokeWidth={1.5} />
+      </div>
+      <span class="brand-text">
+        <span class="brand-name">News</span>
+        <span class="brand-accent">Hub</span>
+      </span>
+    </a>
+    
+    <!-- -- desktop navigation -->
+    <nav class="navbar-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        {navLinks.map((link) => (
+          <li class="nav-item">
+            <a 
+              href={link.href} 
+              class="nav-link"
+              aria-current={Astro.url.pathname === link.href ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    
+    <!-- -- navbar actions -->
+    <div class="navbar-actions">
+      <!-- -- search button with htmx -->
+      <button 
+        class="action-btn search-btn"
+        aria-label="Search articles"
+        hx-get="/api/search-modal"
+        hx-target="#modal-container"
+        hx-swap="innerHTML"
+      >
+        <Search size={20} strokeWidth={2} />
+      </button>
+      
+      <!-- -- rss feed link -->
+      <a href="/rss.xml" class="action-btn rss-btn" aria-label="RSS Feed">
+        <Rss size={20} strokeWidth={2} />
+      </a>
+      
+      <!-- -- mobile menu toggle -->
+      <button 
+        class="mobile-menu-btn"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-menu-toggle
+      >
+        <Menu size={24} strokeWidth={2} class="menu-icon" />
+        <X size={24} strokeWidth={2} class="close-icon" />
+      </button>
+    </div>
+  </div>
+  
+  <!-- -- mobile navigation -->
+  <nav id="mobile-menu" class="mobile-nav" aria-label="Mobile navigation">
+    <ul class="mobile-nav-list">
+      {navLinks.map((link) => (
+        <li class="mobile-nav-item">
+          <a href={link.href} class="mobile-nav-link">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="mobile-nav-footer">
+      <a href="/rss.xml" class="mobile-rss-link">
+        <Rss size={18} strokeWidth={2} />
+        <span>Subscribe to RSS</span>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- -- modal container for search -->
+<div id="modal-container" aria-live="polite"></div>
+
+<style>
+  /* -- navbar styles */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background-color: rgba(10, 10, 11, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-md) var(--space-lg);
+  }
+  
+  /* -- brand styles */
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+  
+  .navbar-brand:hover {
+    opacity: 0.9;
+  }
+  
+  .brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-tertiary));
+    border-radius: var(--radius-md);
+    color: var(--color-bg-primary);
+  }
+  
+  .brand-text {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  
+  .brand-name {
+    color: var(--color-text-primary);
+  }
+  
+  .brand-accent {
+    color: var(--color-accent-primary);
+  }
+  
+  /* -- desktop navigation */
+  .navbar-nav {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .navbar-nav {
+      display: block;
+    }
+  }
+  
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    list-style: none;
+  }
+  
+  .nav-link {
+    position: relative;
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: color var(--transition-fast);
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent-primary);
+    transition: width var(--transition-base);
+  }
+  
+  .nav-link:hover,
+  .nav-link[aria-current="page"] {
+    color: var(--color-text-primary);
+  }
+  
+  .nav-link:hover::after,
+  .nav-link[aria-current="page"]::after {
+    width: 100%;
+  }
+  
+  /* -- navbar actions */
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  
+  .action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  
+  .action-btn:hover {
+    border-color: var(--color-accent-primary);
+    color: var(--color-accent-primary);
+    background-color: rgba(255, 107, 53, 0.1);
+  }
+  
+  /* -- mobile menu button */
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  
+  .mobile-menu-btn:hover {
+    border-color: var(--color-accent-primary);
+  }
+  
+  .mobile-menu-btn .close-icon {
+    display: none;
+  }
+  
+  .mobile-menu-btn[aria-expanded="true"] .menu-icon {
+    display: none;
+  }
+  
+  .mobile-menu-btn[aria-expanded="true"] .close-icon {
+    display: block;
+  }
+  
+  @media (min-width: 768px) {
+    .mobile-menu-btn {
+      display: none;
+    }
+  }
+  
+  /* -- mobile navigation */
+  .mobile-nav {
+    display: none;
+    padding: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-bg-secondary);
+  }
+  
+  .mobile-nav.is-open {
+    display: block;
+    animation: slide-down 0.3s ease;
+  }
+  
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .mobile-nav-list {
+    list-style: none;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .mobile-nav-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .mobile-nav-link {
+    display: block;
+    padding: var(--space-md) 0;
+    color: var(--color-text-primary);
+    font-size: var(--text-lg);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+  
+  .mobile-nav-link:hover {
+    color: var(--color-accent-primary);
+  }
+  
+  .mobile-nav-footer {
+    padding-top: var(--space-md);
+  }
+  
+  .mobile-rss-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+  
+  .mobile-rss-link:hover {
+    color: var(--color-accent-primary);
+  }
+</style>
+
+<script is:inline>
+  // -- mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('[data-menu-toggle]');
+    const mobileNav = document.getElementById('mobile-menu');
+    
+    if (menuBtn && mobileNav) {
+      menuBtn.addEventListener('click', function() {
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+        mobileNav.classList.toggle('is-open');
+      });
+    }
+  });
+</script>

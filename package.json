@@ -1,0 +1,31 @@
+{
+  "name": "news-hub",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "AI-powered news and technology platform built with Astro and HTMX",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.16.0",
+    "htmx.org": "^2.0.0",
+    "lucide-astro": "^0.447.0"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.2.0",
+    "typescript": "^5.6.0"
+  },
+  "keywords": [
+    "news",
+    "technology",
+    "astro",
+    "htmx",
+    "ai-content"
+  ],
+  "author": "",
+  "license": "MIT"
+}

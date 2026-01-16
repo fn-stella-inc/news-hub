@@ -1,0 +1,216 @@
+---
+// -- news list component with htmx infinite scroll
+import ArticleCard from './article-card.astro';
+import { Loader2 } from 'lucide-astro';
+
+interface Article {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  publishedAt: string;
+  readingTime?: number;
+  imageUrl?: string;
+}
+
+interface Props {
+  articles: Article[];
+  category?: string;
+  showLoadMore?: boolean;
+  initialPage?: number;
+}
+
+const { 
+  articles, 
+  category = 'all',
+  showLoadMore = true,
+  initialPage = 1,
+} = Astro.props;
+
+const nextPage = initialPage + 1;
+const apiUrl = category !== 'all' 
+  ? `/api/articles?category=${category}&page=${nextPage}`
+  : `/api/articles?page=${nextPage}`;
+---
+
+<div class="news-list-wrapper">
+  <!-- -- articles grid -->
+  <div class="news-grid" id="news-grid">
+    {articles.map((article, index) => (
+      <ArticleCard
+        slug={article.slug}
+        title={article.title}
+        excerpt={article.excerpt}
+        category={article.category}
+        publishedAt={article.publishedAt}
+        readingTime={article.readingTime}
+        imageUrl={article.imageUrl}
+        featured={index === 0}
+      />
+    ))}
+  </div>
+  
+  <!-- -- load more section with htmx -->
+  {showLoadMore && (
+    <div class="load-more-container" id="load-more-container">
+      <button
+        class="load-more-btn"
+        hx-get={apiUrl}
+        hx-target="#news-grid"
+        hx-swap="beforeend"
+        hx-trigger="click"
+        hx-indicator=".loading-indicator"
+        aria-label="Load more articles"
+      >
+        <span class="btn-text">Load More Articles</span>
+        <span class="loading-indicator">
+          <Loader2 size={18} strokeWidth={2} class="spinner" />
+          <span>Loading...</span>
+        </span>
+      </button>
+    </div>
+  )}
+  
+  <!-- -- empty state -->
+  {articles.length === 0 && (
+    <div class="empty-state">
+      <p class="empty-message">No articles found in this category.</p>
+      <a href="/news" class="btn btn-secondary">View All News</a>
+    </div>
+  )}
+</div>
+
+<style>
+  /* -- news list wrapper */
+  .news-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+  
+  /* -- news grid */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+  
+  @media (max-width: 1024px) {
+    .news-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* -- load more */
+  .load-more-container {
+    display: flex;
+    justify-content: center;
+    padding: var(--space-lg) 0;
+  }
+  
+  .load-more-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    min-width: 200px;
+    padding: var(--space-md) var(--space-xl);
+    background-color: transparent;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all var(--transition-base);
+  }
+  
+  .load-more-btn:hover {
+    border-color: var(--color-accent-primary);
+    color: var(--color-accent-primary);
+    background-color: rgba(255, 107, 53, 0.05);
+  }
+  
+  .load-more-btn:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+  }
+  
+  /* -- loading indicator */
+  .loading-indicator {
+    display: none;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+  
+  .load-more-btn.htmx-request .btn-text {
+    display: none;
+  }
+  
+  .load-more-btn.htmx-request .loading-indicator {
+    display: flex;
+  }
+  
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* -- empty state */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    padding: var(--space-3xl);
+    text-align: center;
+    background-color: var(--color-bg-card);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  
+  .empty-message {
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    margin: 0;
+  }
+</style>
+
+<script is:inline>
+  // -- htmx event handlers for load more functionality
+  document.addEventListener('htmx:afterRequest', function(event) {
+    // -- check if load more button was clicked
+    if (event.target.classList.contains('load-more-btn')) {
+      // -- update the api url for next page
+      const currentPage = parseInt(new URL(event.detail.pathInfo.requestPath, window.location.origin).searchParams.get('page') || '2');
+      const nextPage = currentPage + 1;
+      const url = new URL(event.detail.pathInfo.requestPath, window.location.origin);
+      url.searchParams.set('page', nextPage.toString());
+      event.target.setAttribute('hx-get', url.pathname + url.search);
+      htmx.process(event.target);
+    }
+  });
+  
+  // -- hide load more button when no more articles
+  document.addEventListener('htmx:afterSwap', function(event) {
+    if (event.detail.target.id === 'news-grid') {
+      // -- check if response is empty or contains end marker
+      const response = event.detail.xhr.responseText;
+      if (!response.trim() || response.includes('data-end-of-articles')) {
+        const loadMoreContainer = document.getElementById('load-more-container');
+        if (loadMoreContainer) {
+          loadMoreContainer.style.display = 'none';
+        }
+      }
+    }
+  });
+</script>

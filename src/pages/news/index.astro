@@ -1,0 +1,100 @@
+---
+// -- news listing page with category filter
+import BaseLayout from '../layouts/base-layout.astro';
+import Navbar from '../components/navbar.astro';
+import Footer from '../components/footer.astro';
+import NewsList from '../components/news-list.astro';
+import CategoryFilter from '../components/category-filter.astro';
+import { getPaginatedArticles } from '../lib/articles';
+
+// -- get category from url query
+const url = new URL(Astro.request.url);
+const category = url.searchParams.get('category') || 'all';
+
+// -- get initial articles
+const { articles, hasMore } = getPaginatedArticles(1, 6, category);
+
+// -- page metadata based on category
+const categoryTitles: Record<string, string> = {
+  all: 'All News',
+  technology: 'Technology News',
+  science: 'Science News',
+  business: 'Business News',
+  culture: 'Culture News',
+};
+
+const pageTitle = categoryTitles[category] || 'News';
+const pageDescription = `Browse the latest ${category === 'all' ? '' : category + ' '}news and updates. AI-curated content covering diverse topics and perspectives.`;
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  keywords={['news', category, 'articles', 'updates', 'latest']}
+  ogType="website"
+>
+  <Navbar />
+  
+  <main id="main-content" class="news-page">
+    <div class="container">
+      <!-- -- page header -->
+      <header class="page-header">
+        <h1 class="page-title">{pageTitle}</h1>
+        <p class="page-description">
+          Discover the latest stories and updates from around the world
+        </p>
+      </header>
+      
+      <!-- -- category filter -->
+      <CategoryFilter activeCategory={category} />
+      
+      <!-- -- news list -->
+      <NewsList 
+        articles={articles} 
+        category={category}
+        showLoadMore={hasMore}
+      />
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* -- news page styles */
+  .news-page {
+    padding: var(--space-2xl) 0 var(--space-3xl);
+    min-height: calc(100vh - 200px);
+  }
+  
+  .page-header {
+    margin-bottom: var(--space-2xl);
+    text-align: center;
+  }
+  
+  .page-title {
+    font-size: var(--text-4xl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+    animation: fade-in 0.6s ease forwards;
+  }
+  
+  .page-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fade-in 0.6s ease 0.1s forwards;
+    opacity: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: var(--text-3xl);
+    }
+    
+    .page-description {
+      font-size: var(--text-base);
+    }
+  }
+</style>

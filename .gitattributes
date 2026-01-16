@@ -1,0 +1,53 @@
+# -- auto detect text files and perform lf normalization
+* text=auto eol=lf
+
+# -- source code
+*.astro text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# -- documentation
+*.md text eol=lf diff=markdown
+LICENSE text eol=lf
+
+# -- configs
+.editorconfig text eol=lf
+.env* text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+Dockerfile text eol=lf
+
+# -- images
+*.gif binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.svg text eol=lf
+*.webp binary
+
+# -- fonts
+*.eot binary
+*.otf binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# -- archives
+*.7z binary
+*.gz binary
+*.tar binary
+*.zip binary
+
+# -- lock files
+package-lock.json text eol=lf -diff
+yarn.lock text eol=lf -diff
+pnpm-lock.yaml text eol=lf -diff

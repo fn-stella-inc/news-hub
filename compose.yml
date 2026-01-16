@@ -1,0 +1,76 @@
+# -- docker compose configuration for news-hub
+# -- use: docker compose up -d
+
+services:
+  # -- main application service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: news-hub-app
+    restart: unless-stopped
+    ports:
+      - "4321:4321"
+    environment:
+      - NODE_ENV=production
+      - SITE_URL=${SITE_URL:-http://localhost:4321}
+      - AI_API_KEY=${AI_API_KEY:-}
+      - AI_API_URL=${AI_API_URL:-}
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4321/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - news-hub-network
+
+  # -- reverse proxy with nginx (optional)
+  nginx:
+    image: nginx:alpine
+    container_name: news-hub-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      app:
+        condition: service_healthy
+    networks:
+      - news-hub-network
+    profiles:
+      - production
+
+  # -- development service with hot reload
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: news-hub-dev
+    ports:
+      - "4321:4321"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev -- --host
+    networks:
+      - news-hub-network
+    profiles:
+      - development
+
+networks:
+  news-hub-network:
+    driver: bridge
+    name: news-hub-network
+
+volumes:
+  node_modules:
+    name: news-hub-node-modules

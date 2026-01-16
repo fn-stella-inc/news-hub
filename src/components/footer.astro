@@ -1,0 +1,460 @@
+---
+// -- footer component
+import { Newspaper, Github, Twitter, Linkedin, Mail, Rss, Heart, ExternalLink } from 'lucide-astro';
+
+const currentYear = new Date().getFullYear();
+
+interface FooterLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+interface FooterSection {
+  title: string;
+  links: FooterLink[];
+}
+
+const footerSections: FooterSection[] = [
+  {
+    title: 'Categories',
+    links: [
+      { label: 'Technology', href: '/news?category=technology' },
+      { label: 'Science', href: '/news?category=science' },
+      { label: 'Business', href: '/news?category=business' },
+      { label: 'Culture', href: '/news?category=culture' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'RSS Feed', href: '/rss.xml' },
+      { label: 'Sitemap', href: '/sitemap-index.xml' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Terms of Service', href: '/terms' },
+      { label: 'Cookie Policy', href: '/cookies' },
+    ],
+  },
+];
+
+interface SocialLink {
+  label: string;
+  href: string;
+  icon: string;
+}
+
+const socialLinks: SocialLink[] = [
+  { label: 'GitHub', href: 'https://github.com', icon: 'github' },
+  { label: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
+  { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
+  { label: 'Email', href: 'mailto:contact@news-hub.example.com', icon: 'mail' },
+];
+---
+
+<footer class="footer">
+  <div class="footer-container">
+    <!-- -- footer top section -->
+    <div class="footer-top">
+      <!-- -- brand column -->
+      <div class="footer-brand">
+        <a href="/" class="brand-link" aria-label="News Hub Home">
+          <div class="brand-icon">
+            <Newspaper size={24} strokeWidth={1.5} />
+          </div>
+          <span class="brand-text">
+            <span class="brand-name">News</span>
+            <span class="brand-accent">Hub</span>
+          </span>
+        </a>
+        <p class="brand-description">
+          Your trusted source for the latest news, technology updates, and diverse topics. 
+          Powered by AI to deliver fresh content daily.
+        </p>
+        <!-- -- social links -->
+        <div class="social-links">
+          {socialLinks.map((social) => (
+            <a 
+              href={social.href} 
+              class="social-link"
+              aria-label={social.label}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {social.icon === 'github' && <Github size={18} strokeWidth={2} />}
+              {social.icon === 'twitter' && <Twitter size={18} strokeWidth={2} />}
+              {social.icon === 'linkedin' && <Linkedin size={18} strokeWidth={2} />}
+              {social.icon === 'mail' && <Mail size={18} strokeWidth={2} />}
+            </a>
+          ))}
+        </div>
+      </div>
+      
+      <!-- -- footer links columns -->
+      <div class="footer-links">
+        {footerSections.map((section) => (
+          <div class="footer-column">
+            <h3 class="column-title">{section.title}</h3>
+            <ul class="column-list">
+              {section.links.map((link) => (
+                <li>
+                  <a 
+                    href={link.href} 
+                    class="column-link"
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
+                  >
+                    {link.label}
+                    {link.external && <ExternalLink size={12} strokeWidth={2} />}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- -- newsletter subscription -->
+    <div class="newsletter-section">
+      <div class="newsletter-content">
+        <div class="newsletter-text">
+          <h3 class="newsletter-title">Stay Updated</h3>
+          <p class="newsletter-description">
+            Subscribe to our newsletter for the latest news delivered to your inbox.
+          </p>
+        </div>
+        <form 
+          class="newsletter-form"
+          hx-post="/api/subscribe"
+          hx-swap="innerHTML"
+          hx-target=".newsletter-response"
+        >
+          <div class="input-group">
+            <label for="email-input" class="visually-hidden">Email address</label>
+            <input 
+              type="email" 
+              id="email-input"
+              name="email"
+              placeholder="Enter your email"
+              required
+              class="newsletter-input"
+            />
+            <button type="submit" class="newsletter-btn">
+              <Rss size={18} strokeWidth={2} />
+              <span>Subscribe</span>
+            </button>
+          </div>
+          <div class="newsletter-response" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- -- footer bottom -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; {currentYear} News Hub. All rights reserved.
+      </p>
+      <p class="made-with">
+        Made with <Heart size={14} strokeWidth={2} class="heart-icon" /> using Astro & HTMX
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* -- footer styles */
+  .footer {
+    background-color: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
+  }
+  
+  .footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-3xl) var(--space-lg);
+  }
+  
+  /* -- footer top section */
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  @media (min-width: 768px) {
+    .footer-top {
+      grid-template-columns: 1.5fr 2fr;
+    }
+  }
+  
+  /* -- brand column */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    width: fit-content;
+  }
+  
+  .brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-tertiary));
+    border-radius: var(--radius-md);
+    color: var(--color-bg-primary);
+  }
+  
+  .brand-text {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+  }
+  
+  .brand-name {
+    color: var(--color-text-primary);
+  }
+  
+  .brand-accent {
+    color: var(--color-accent-primary);
+  }
+  
+  .brand-description {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    max-width: 300px;
+    margin: 0;
+  }
+  
+  /* -- social links */
+  .social-links {
+    display: flex;
+    gap: var(--space-sm);
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+  }
+  
+  .social-link:hover {
+    background-color: var(--color-accent-primary);
+    border-color: var(--color-accent-primary);
+    color: var(--color-bg-primary);
+    transform: translateY(-2px);
+  }
+  
+  /* -- footer links */
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+  
+  @media (min-width: 640px) {
+    .footer-links {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .column-title {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-primary);
+  }
+  
+  .column-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  .column-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    transition: color var(--transition-fast);
+  }
+  
+  .column-link:hover {
+    color: var(--color-accent-primary);
+  }
+  
+  /* -- newsletter section */
+  .newsletter-section {
+    padding: var(--space-2xl) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .newsletter-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    align-items: center;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .newsletter-content {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+  
+  .newsletter-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  
+  .newsletter-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-text-primary);
+  }
+  
+  .newsletter-description {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+  
+  .newsletter-form {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .input-group {
+    display: flex;
+    gap: var(--space-sm);
+  }
+  
+  .newsletter-input {
+    flex: 1;
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    transition: border-color var(--transition-fast);
+  }
+  
+  .newsletter-input::placeholder {
+    color: var(--color-text-muted);
+  }
+  
+  .newsletter-input:focus {
+    outline: none;
+    border-color: var(--color-accent-primary);
+  }
+  
+  .newsletter-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-lg);
+    background-color: var(--color-accent-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--color-bg-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+  }
+  
+  .newsletter-btn:hover {
+    background-color: var(--color-accent-secondary);
+    transform: translateY(-2px);
+  }
+  
+  .newsletter-response {
+    margin-top: var(--space-sm);
+    font-size: var(--text-sm);
+  }
+  
+  /* -- footer bottom */
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-top: var(--space-xl);
+    text-align: center;
+  }
+  
+  @media (min-width: 640px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  
+  .copyright,
+  .made-with {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    margin: 0;
+  }
+  
+  .made-with {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+  
+  .heart-icon {
+    color: var(--color-accent-primary);
+    animation: heartbeat 1.5s ease infinite;
+  }
+  
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+</style>

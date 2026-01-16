@@ -1,0 +1,173 @@
+---
+// -- category filter component with htmx
+import { Grid3X3, Cpu, FlaskConical, Briefcase, Palette } from 'lucide-astro';
+
+interface Category {
+  slug: string;
+  label: string;
+  icon: string;
+}
+
+interface Props {
+  activeCategory?: string;
+}
+
+const { activeCategory = 'all' } = Astro.props;
+
+const categories: Category[] = [
+  { slug: 'all', label: 'All', icon: 'grid' },
+  { slug: 'technology', label: 'Technology', icon: 'cpu' },
+  { slug: 'science', label: 'Science', icon: 'flask' },
+  { slug: 'business', label: 'Business', icon: 'briefcase' },
+  { slug: 'culture', label: 'Culture', icon: 'palette' },
+];
+---
+
+<nav class="category-filter" aria-label="Filter by category">
+  <div class="filter-container">
+    {categories.map((category) => (
+      <a
+        href={category.slug === 'all' ? '/news' : `/news?category=${category.slug}`}
+        class:list={[
+          'filter-btn',
+          { 'filter-btn-active': activeCategory === category.slug }
+        ]}
+        aria-current={activeCategory === category.slug ? 'page' : undefined}
+        hx-get={category.slug === 'all' 
+          ? '/api/articles?page=1' 
+          : `/api/articles?category=${category.slug}&page=1`}
+        hx-target="#news-grid"
+        hx-swap="innerHTML"
+        hx-push-url={category.slug === 'all' ? '/news' : `/news?category=${category.slug}`}
+        hx-indicator=".category-loading"
+      >
+        {category.icon === 'grid' && <Grid3X3 size={16} strokeWidth={2} />}
+        {category.icon === 'cpu' && <Cpu size={16} strokeWidth={2} />}
+        {category.icon === 'flask' && <FlaskConical size={16} strokeWidth={2} />}
+        {category.icon === 'briefcase' && <Briefcase size={16} strokeWidth={2} />}
+        {category.icon === 'palette' && <Palette size={16} strokeWidth={2} />}
+        <span>{category.label}</span>
+      </a>
+    ))}
+  </div>
+  
+  <!-- -- loading indicator -->
+  <div class="category-loading" aria-hidden="true">
+    <div class="loading-bar"></div>
+  </div>
+</nav>
+
+<style>
+  /* -- category filter styles */
+  .category-filter {
+    position: relative;
+    margin-bottom: var(--space-xl);
+  }
+  
+  .filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  
+  .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+  
+  .filter-btn:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-tertiary);
+  }
+  
+  .filter-btn-active {
+    background-color: var(--color-accent-primary);
+    color: var(--color-bg-primary);
+    border-color: var(--color-accent-primary);
+  }
+  
+  .filter-btn-active:hover {
+    background-color: var(--color-accent-secondary);
+    color: var(--color-bg-primary);
+  }
+  
+  /* -- loading indicator */
+  .category-loading {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+  
+  .htmx-request ~ .category-loading,
+  .htmx-request .category-loading {
+    opacity: 1;
+  }
+  
+  .loading-bar {
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-accent-primary),
+      transparent
+    );
+    animation: loading-slide 1s ease infinite;
+  }
+  
+  @keyframes loading-slide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  /* -- responsive */
+  @media (max-width: 640px) {
+    .filter-container {
+      justify-content: center;
+    }
+    
+    .filter-btn span {
+      display: none;
+    }
+    
+    .filter-btn {
+      padding: var(--space-sm);
+    }
+  }
+</style>
+
+<script is:inline>
+  // -- update active state on htmx navigation
+  document.addEventListener('htmx:afterOnLoad', function(event) {
+    if (event.target.classList.contains('filter-btn')) {
+      // -- remove active class from all buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('filter-btn-active');
+        btn.removeAttribute('aria-current');
+      });
+      
+      // -- add active class to clicked button
+      event.target.classList.add('filter-btn-active');
+      event.target.setAttribute('aria-current', 'page');
+    }
+  });
+</script>

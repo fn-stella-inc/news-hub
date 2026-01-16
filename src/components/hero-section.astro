@@ -1,0 +1,363 @@
+---
+// -- hero section component for landing page
+import { ArrowRight, Sparkles, TrendingUp, Zap } from 'lucide-astro';
+---
+
+<section class="hero">
+  <div class="hero-container">
+    <!-- -- background decorations -->
+    <div class="hero-bg-gradient" aria-hidden="true"></div>
+    <div class="hero-bg-grid" aria-hidden="true"></div>
+    
+    <!-- -- hero content -->
+    <div class="hero-content">
+      <!-- -- badge -->
+      <div class="hero-badge">
+        <Sparkles size={14} strokeWidth={2} />
+        <span>AI-Powered News Platform</span>
+      </div>
+      
+      <!-- -- headline -->
+      <h1 class="hero-title">
+        Stay Informed with
+        <span class="title-highlight">Intelligent</span>
+        News Coverage
+      </h1>
+      
+      <!-- -- description -->
+      <p class="hero-description">
+        Discover the latest in technology, science, and world affairs. 
+        Our AI-curated content delivers fresh perspectives on topics that matter, 
+        updated continuously to keep you ahead.
+      </p>
+      
+      <!-- -- cta buttons -->
+      <div class="hero-actions">
+        <a href="/news" class="btn btn-primary">
+          <span>Explore News</span>
+          <ArrowRight size={18} strokeWidth={2} />
+        </a>
+        <a href="/about" class="btn btn-secondary">
+          Learn More
+        </a>
+      </div>
+      
+      <!-- -- stats -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <TrendingUp size={20} strokeWidth={2} class="stat-icon" />
+          <div class="stat-content">
+            <span class="stat-value">1000+</span>
+            <span class="stat-label">Articles</span>
+          </div>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <Zap size={20} strokeWidth={2} class="stat-icon" />
+          <div class="stat-content">
+            <span class="stat-value">24/7</span>
+            <span class="stat-label">Updates</span>
+          </div>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <Sparkles size={20} strokeWidth={2} class="stat-icon" />
+          <div class="stat-content">
+            <span class="stat-value">AI</span>
+            <span class="stat-label">Powered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- -- hero visual -->
+    <div class="hero-visual">
+      <div class="visual-card visual-card-1">
+        <div class="card-header">
+          <span class="card-tag">Technology</span>
+          <span class="card-time">2 min ago</span>
+        </div>
+        <h3 class="card-title">Latest AI Breakthroughs Reshape Industry</h3>
+      </div>
+      <div class="visual-card visual-card-2">
+        <div class="card-header">
+          <span class="card-tag">Science</span>
+          <span class="card-time">15 min ago</span>
+        </div>
+        <h3 class="card-title">New Discovery Changes Climate Models</h3>
+      </div>
+      <div class="visual-card visual-card-3">
+        <div class="card-header">
+          <span class="card-tag">Business</span>
+          <span class="card-time">1 hour ago</span>
+        </div>
+        <h3 class="card-title">Markets React to Global Economic Shift</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* -- hero section styles */
+  .hero {
+    position: relative;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .hero-container {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-3xl) var(--space-lg);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* -- background decorations */
+  .hero-bg-gradient {
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 80%;
+    height: 150%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 107, 53, 0.15) 0%,
+      rgba(46, 196, 182, 0.08) 40%,
+      transparent 70%
+    );
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    pointer-events: none;
+  }
+  
+  /* -- hero content */
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  
+  /* -- badge */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-md);
+    background-color: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: var(--radius-full);
+    color: var(--color-accent-primary);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    width: fit-content;
+    animation: pulse-glow 3s ease infinite;
+  }
+  
+  /* -- headline */
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    color: var(--color-text-primary);
+    animation: fade-in 0.8s ease forwards;
+  }
+  
+  .title-highlight {
+    display: block;
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-tertiary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* -- description */
+  .hero-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0;
+    animation: fade-in 0.8s ease 0.2s forwards;
+    opacity: 0;
+  }
+  
+  /* -- cta buttons */
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    animation: fade-in 0.8s ease 0.4s forwards;
+    opacity: 0;
+  }
+  
+  .hero-actions .btn {
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--text-base);
+  }
+  
+  /* -- stats */
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding-top: var(--space-lg);
+    animation: fade-in 0.8s ease 0.6s forwards;
+    opacity: 0;
+  }
+  
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  
+  .stat-icon {
+    color: var(--color-accent-primary);
+  }
+  
+  .stat-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+  
+  .stat-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background-color: var(--color-border);
+  }
+  
+  /* -- hero visual */
+  .hero-visual {
+    position: relative;
+    display: none;
+    height: 500px;
+    perspective: 1000px;
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-visual {
+      display: block;
+    }
+  }
+  
+  .visual-card {
+    position: absolute;
+    width: 320px;
+    padding: var(--space-lg);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    transition: transform var(--transition-slow);
+  }
+  
+  .visual-card:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+  
+  .visual-card-1 {
+    top: 10%;
+    left: 10%;
+    transform: rotate(-3deg);
+    animation: float-1 6s ease-in-out infinite;
+  }
+  
+  .visual-card-2 {
+    top: 35%;
+    right: 5%;
+    transform: rotate(2deg);
+    animation: float-2 7s ease-in-out infinite;
+  }
+  
+  .visual-card-3 {
+    bottom: 10%;
+    left: 20%;
+    transform: rotate(-1deg);
+    animation: float-3 8s ease-in-out infinite;
+  }
+  
+  @keyframes float-1 {
+    0%, 100% { transform: rotate(-3deg) translateY(0); }
+    50% { transform: rotate(-3deg) translateY(-15px); }
+  }
+  
+  @keyframes float-2 {
+    0%, 100% { transform: rotate(2deg) translateY(0); }
+    50% { transform: rotate(2deg) translateY(-12px); }
+  }
+  
+  @keyframes float-3 {
+    0%, 100% { transform: rotate(-1deg) translateY(0); }
+    50% { transform: rotate(-1deg) translateY(-10px); }
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .card-tag {
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--color-accent-primary);
+    border-radius: var(--radius-sm);
+    color: var(--color-bg-primary);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .card-time {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+  }
+  
+  .card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+  }
+</style>

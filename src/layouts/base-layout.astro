@@ -1,0 +1,127 @@
+---
+// -- base layout component for all pages
+interface Props {
+  title: string;
+  description?: string;
+  keywords?: string[];
+  ogImage?: string;
+  ogType?: string;
+  canonicalUrl?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description = 'News Hub - Your source for the latest news, technology updates, and diverse topics powered by AI.',
+  keywords = ['news', 'technology', 'ai', 'updates', 'articles'],
+  ogImage = '/og-image.png',
+  ogType = 'website',
+  canonicalUrl,
+  noIndex = false,
+} = Astro.props;
+
+const siteUrl = import.meta.env.SITE_URL || 'https://news-hub.example.com';
+const fullCanonicalUrl = canonicalUrl || Astro.url.href;
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- -- meta charset and viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- -- primary meta tags -->
+    <title>{title} | News Hub</title>
+    <meta name="title" content={`${title} | News Hub`} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
+    <meta name="author" content="News Hub Team" />
+    <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
+    <meta name="googlebot" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
+    
+    <!-- -- canonical url -->
+    <link rel="canonical" href={fullCanonicalUrl} />
+    
+    <!-- -- open graph meta tags -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={fullCanonicalUrl} />
+    <meta property="og:title" content={`${title} | News Hub`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:site_name" content="News Hub" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- -- twitter card meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={fullCanonicalUrl} />
+    <meta name="twitter:title" content={`${title} | News Hub`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImage} />
+    
+    <!-- -- additional seo meta tags -->
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- -- favicon and icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- -- preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- -- google fonts -->
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" 
+      rel="stylesheet" 
+    />
+    
+    <!-- -- htmx library -->
+    <script src="https://unpkg.com/htmx.org@2.0.0" defer is:inline></script>
+    
+    <!-- -- global styles -->
+    <style is:global>
+      @import '../styles/global.css';
+    </style>
+    
+    <!-- -- structured data for seo -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "News Hub",
+      "description": description,
+      "url": siteUrl,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${siteUrl}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    })} />
+  </head>
+  <body>
+    <!-- -- skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- -- main content slot -->
+    <slot />
+    
+    <!-- -- htmx configuration -->
+    <script is:inline>
+      // -- htmx global configuration
+      document.body.addEventListener('htmx:configRequest', function(event) {
+        // -- add custom headers if needed
+        event.detail.headers['X-Requested-With'] = 'htmx';
+      });
+      
+      // -- handle htmx errors gracefully
+      document.body.addEventListener('htmx:responseError', function(event) {
+        console.error('htmx request failed:', event.detail);
+      });
+    </script>
+  </body>
+</html>
