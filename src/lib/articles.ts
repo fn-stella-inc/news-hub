@@ -69,10 +69,15 @@ export function getArticlesByCategory(category: string): Article[] {
     return [];
   }
   
-  return categoryData.articles.map(article => ({
+  const articles = categoryData.articles.map(article => ({
     ...article,
     category: categoryData.category,
   }));
+  
+  // -- sort by date (newest first)
+  return articles.sort((a, b) => 
+    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
 }
 
 // -- get article by slug

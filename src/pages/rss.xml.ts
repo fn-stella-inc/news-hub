@@ -1,4 +1,7 @@
 // -- rss feed generator endpoint
+// -- this endpoint is server-rendered
+export const prerender = false;
+
 import type { APIRoute } from 'astro';
 import { getAllArticles } from '../lib/articles';
 

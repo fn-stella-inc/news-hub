@@ -1,16 +1,14 @@
 ---
-// -- news list component - light theme
+// -- news list component - simple static rendering
 import ArticleCard from './article-card.astro';
-import { Loader2 } from 'lucide-astro';
 import type { Article } from '../lib/articles';
 
 interface Props {
   articles: Article[];
   category?: string;
-  showLoadMore?: boolean;
 }
 
-const { articles, category = 'all', showLoadMore = true } = Astro.props;
+const { articles, category = 'all' } = Astro.props;
 ---
 
 <div class="news-list">
@@ -36,26 +34,6 @@ const { articles, category = 'all', showLoadMore = true } = Astro.props;
       </div>
     )}
   </div>
-  
-  <!-- -- load more button -->
-  {showLoadMore && articles.length > 0 && (
-    <div class="load-more-wrapper">
-      <button
-        class="load-more-btn"
-        hx-get={`/api/articles?page=2&category=${category}`}
-        hx-target="#news-grid"
-        hx-swap="beforeend"
-        hx-indicator=".load-more-indicator"
-        data-page="1"
-        data-category={category}
-      >
-        <span class="btn-text">Load More Articles</span>
-        <span class="load-more-indicator">
-          <Loader2 size={18} strokeWidth={2} class="spinner" />
-        </span>
-      </button>
-    </div>
-  )}
 </div>
 
 <style>
@@ -109,92 +87,4 @@ const { articles, category = 'all', showLoadMore = true } = Astro.props;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  
-  /* -- load more button */
-  .load-more-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--space-xl);
-  }
-  
-  .load-more-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-sm);
-    padding: var(--space-md) var(--space-2xl);
-    background: linear-gradient(135deg, #dd0cf0 0%, #7c3aed 100%);
-    border: none;
-    border-radius: var(--radius-lg);
-    color: white;
-    font-family: var(--font-display);
-    font-size: var(--text-base);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--transition-base);
-    position: relative;
-  }
-  
-  .load-more-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px -10px rgba(221, 12, 240, 0.5);
-  }
-  
-  .load-more-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
-  
-  .load-more-indicator {
-    display: none;
-  }
-  
-  .load-more-btn.htmx-request .btn-text {
-    opacity: 0;
-  }
-  
-  .load-more-btn.htmx-request .load-more-indicator {
-    display: flex;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .spinner {
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
 </style>
-
-<script is:inline>
-  // -- handle load more button updates
-  document.addEventListener('htmx:afterRequest', function(event) {
-    const btn = event.target;
-    if (btn.classList.contains('load-more-btn')) {
-      const currentPage = parseInt(btn.dataset.page) || 1;
-      const nextPage = currentPage + 1;
-      const category = btn.dataset.category;
-      
-      btn.dataset.page = nextPage.toString();
-      btn.setAttribute('hx-get', `/api/articles?page=${nextPage + 1}&category=${category}`);
-      
-      // -- re-initialize htmx for the button
-      htmx.process(btn);
-    }
-  });
-  
-  // -- hide load more button when no more articles
-  document.addEventListener('htmx:beforeSwap', function(event) {
-    if (event.detail.xhr.getResponseHeader('X-No-More-Articles') === 'true') {
-      const btn = event.target;
-      if (btn.classList.contains('load-more-btn')) {
-        btn.style.display = 'none';
-      }
-    }
-  });
-</script>

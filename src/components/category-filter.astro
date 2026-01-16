@@ -1,5 +1,5 @@
 ---
-// -- category filter component - light theme
+// -- category filter component - simple navigation links
 import { Grid3X3, Cpu, FlaskConical, Briefcase, Palette, BookOpen } from 'lucide-astro';
 
 interface Category {
@@ -34,13 +34,6 @@ const categories: Category[] = [
           { 'filter-btn-active': activeCategory === category.slug }
         ]}
         aria-current={activeCategory === category.slug ? 'page' : undefined}
-        hx-get={category.slug === 'all' 
-          ? '/api/articles?page=1' 
-          : `/api/articles?category=${category.slug}&page=1`}
-        hx-target="#news-grid"
-        hx-swap="innerHTML"
-        hx-push-url={category.slug === 'all' ? '/news' : `/news?category=${category.slug}`}
-        hx-indicator=".category-loading"
       >
         {category.icon === 'grid' && <Grid3X3 size={16} strokeWidth={2} />}
         {category.icon === 'cpu' && <Cpu size={16} strokeWidth={2} />}
@@ -51,11 +44,6 @@ const categories: Category[] = [
         <span>{category.label}</span>
       </a>
     ))}
-  </div>
-  
-  <!-- -- loading indicator -->
-  <div class="category-loading" aria-hidden="true">
-    <div class="loading-bar"></div>
   </div>
 </nav>
 
@@ -109,34 +97,6 @@ const categories: Category[] = [
     background: linear-gradient(135deg, #c40bd6 0%, #6d28d9 100%);
   }
   
-  /* -- loading indicator */
-  .category-loading {
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity var(--transition-fast);
-  }
-  
-  .htmx-request ~ .category-loading,
-  .htmx-request .category-loading {
-    opacity: 1;
-  }
-  
-  .loading-bar {
-    height: 100%;
-    background: var(--color-accent-gradient);
-    animation: loading-slide 1s ease infinite;
-  }
-  
-  @keyframes loading-slide {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
-  
   /* -- responsive */
   @media (max-width: 640px) {
     .filter-container {
@@ -152,20 +112,3 @@ const categories: Category[] = [
     }
   }
 </style>
-
-<script is:inline>
-  // -- update active state on htmx navigation
-  document.addEventListener('htmx:afterOnLoad', function(event) {
-    if (event.target.classList.contains('filter-btn')) {
-      // -- remove active class from all buttons
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('filter-btn-active');
-        btn.removeAttribute('aria-current');
-      });
-      
-      // -- add active class to clicked button
-      event.target.classList.add('filter-btn-active');
-      event.target.setAttribute('aria-current', 'page');
-    }
-  });
-</script>

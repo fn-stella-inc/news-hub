@@ -1,18 +1,21 @@
 ---
 // -- news listing page - light theme
+// -- this page is server-rendered to support URL query params
+export const prerender = false;
+
 import BaseLayout from '../../layouts/base-layout.astro';
 import Navbar from '../../components/navbar.astro';
 import Footer from '../../components/footer.astro';
 import NewsList from '../../components/news-list.astro';
 import CategoryFilter from '../../components/category-filter.astro';
-import { getPaginatedArticles, getCategoryInfo } from '../../lib/articles';
+import { getArticlesByCategory, getCategoryInfo } from '../../lib/articles';
 
 // -- get category from url query
 const url = new URL(Astro.request.url);
 const category = url.searchParams.get('category') || 'all';
 
-// -- get initial articles
-const { articles, hasMore } = getPaginatedArticles(1, 6, category);
+// -- get articles filtered by category
+const articles = getArticlesByCategory(category);
 
 // -- get category info for display
 const categoryInfo = getCategoryInfo(category);
@@ -63,7 +66,6 @@ const pageDescription = categoryInfo?.description ||
       <NewsList 
         articles={articles} 
         category={category}
-        showLoadMore={hasMore}
       />
     </div>
   </main>
