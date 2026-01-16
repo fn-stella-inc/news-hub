@@ -1,9 +1,17 @@
 ---
-// -- hero section component - light theme inspired by starship
-import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
+// -- hero section component - fullscreen with animated graphics
+import { ArrowRight, Zap, Shield, Globe, ChevronDown } from 'lucide-astro';
 ---
 
 <section class="hero">
+  <!-- -- animated background elements -->
+  <div class="hero-bg">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+    <div class="grid-pattern"></div>
+  </div>
+  
   <div class="hero-container">
     <!-- -- hero content -->
     <div class="hero-content">
@@ -23,7 +31,7 @@ import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
       <!-- -- cta button -->
       <a href="/news" class="hero-cta">
         Get Started
-        <ArrowRight size={18} strokeWidth={2} />
+        <ArrowRight size={16} strokeWidth={2} />
       </a>
     </div>
     
@@ -31,7 +39,7 @@ import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">
-          <Zap size={20} strokeWidth={2} />
+          <Zap size={18} strokeWidth={2} />
         </div>
         <h3 class="feature-title">Real-Time Updates</h3>
         <p class="feature-description">
@@ -41,7 +49,7 @@ import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
       
       <div class="feature-card">
         <div class="feature-icon">
-          <Shield size={20} strokeWidth={2} />
+          <Shield size={18} strokeWidth={2} />
         </div>
         <h3 class="feature-title">AI-Powered</h3>
         <p class="feature-description">
@@ -51,7 +59,7 @@ import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
       
       <div class="feature-card">
         <div class="feature-icon">
-          <Globe size={20} strokeWidth={2} />
+          <Globe size={18} strokeWidth={2} />
         </div>
         <h3 class="feature-title">Global Coverage</h3>
         <p class="feature-description">
@@ -60,59 +68,143 @@ import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
       </div>
     </div>
     
-    <!-- -- terminal preview -->
-    <div class="terminal-preview">
-      <div class="terminal-header">
-        <div class="terminal-dots">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-        </div>
-        <span class="terminal-title">news-hub /home/user</span>
+    <!-- -- animated chart visualization -->
+    <div class="chart-container">
+      <svg class="chart-svg" viewBox="0 0 400 120" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#dd0cf0;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+          </linearGradient>
+          <linearGradient id="fillGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#dd0cf0;stop-opacity:0.3" />
+            <stop offset="100%" style="stop-color:#dd0cf0;stop-opacity:0" />
+          </linearGradient>
+        </defs>
+        <!-- -- area fill -->
+        <path class="chart-area" d="M0,100 L0,60 Q50,40 100,50 T200,30 T300,45 T400,25 L400,100 Z" fill="url(#fillGradient)"/>
+        <!-- -- main line -->
+        <path class="chart-line" d="M0,60 Q50,40 100,50 T200,30 T300,45 T400,25" stroke="url(#chartGradient)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- -- animated dots -->
+        <circle class="chart-dot dot-1" cx="100" cy="50" r="4" fill="#dd0cf0"/>
+        <circle class="chart-dot dot-2" cx="200" cy="30" r="4" fill="#7c3aed"/>
+        <circle class="chart-dot dot-3" cx="300" cy="45" r="4" fill="#22d3ee"/>
+      </svg>
+      
+      <!-- -- floating stats -->
+      <div class="floating-stat stat-1">
+        <span class="stat-value">+24%</span>
+        <span class="stat-label">Growth</span>
       </div>
-      <div class="terminal-body">
-        <div class="terminal-line">
-          <span class="prompt">news-hub</span>
-          <span class="branch">on</span>
-          <span class="git-branch">⚡ main</span>
-        </div>
-        <div class="terminal-line">
-          <span class="arrow">❯</span>
-          <span class="command">fetch</span>
-          <span class="args">--latest news</span>
-        </div>
+      <div class="floating-stat stat-2">
+        <span class="stat-value">1.2M</span>
+        <span class="stat-label">Readers</span>
+      </div>
+      <div class="floating-stat stat-3">
+        <span class="stat-value">500+</span>
+        <span class="stat-label">Articles</span>
       </div>
     </div>
+    
+    <!-- -- scroll indicator -->
+    <a href="#latest-stories" class="scroll-indicator" aria-label="Scroll to latest stories">
+      <ChevronDown size={20} strokeWidth={2} />
+    </a>
   </div>
 </section>
 
 <style>
-  /* -- hero section styles - light theme */
+  /* -- hero section styles - fullscreen */
   .hero {
     position: relative;
-    padding: var(--space-2xl) 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--color-bg-primary);
     overflow: hidden;
   }
   
+  /* -- animated background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  .gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .orb-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #dd0cf0, #7c3aed);
+    top: -100px;
+    right: -100px;
+    animation-delay: 0s;
+  }
+  
+  .orb-2 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #7c3aed, #22d3ee);
+    bottom: -50px;
+    left: -50px;
+    animation-delay: -3s;
+  }
+  
+  .orb-3 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #22d3ee, #dd0cf0);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -5s;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+  }
+  
+  .grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(221, 12, 240, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(221, 12, 240, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
   .hero-container {
+    position: relative;
+    z-index: 1;
     max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 var(--space-lg);
+    padding: var(--space-lg);
     text-align: center;
   }
   
   /* -- hero content */
   .hero-content {
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--space-xl);
   }
   
-  /* -- gradient title - starship style */
+  /* -- gradient title */
   .hero-title {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-size: clamp(2.5rem, 8vw, 4rem);
     font-weight: 800;
     line-height: 1;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
     animation: fade-in 0.6s ease forwards;
   }
   
@@ -135,15 +227,15 @@ import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
   }
   
   .hero-description {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     color: var(--color-text-secondary);
-    max-width: 550px;
+    max-width: 500px;
     margin: 0 auto var(--space-lg);
     animation: fade-in 0.6s ease 0.2s forwards;
     opacity: 0;
   }
   
-  /* -- cta button - starship style */
+  /* -- cta button */
   .hero-cta {
     display: inline-flex;
     align-items: center;
@@ -172,20 +264,22 @@ import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-md);
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-xl);
   }
   
   @media (max-width: 768px) {
     .features-grid {
       grid-template-columns: 1fr;
+      gap: var(--space-sm);
     }
   }
   
   .feature-card {
-    padding: var(--space-lg);
-    background-color: var(--color-bg-secondary);
+    padding: var(--space-md);
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-lg);
     text-align: left;
     transition: all var(--transition-base);
     animation: fade-in 0.6s ease forwards;
@@ -197,16 +291,16 @@ import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
   
   .feature-card:hover {
     border-color: var(--color-border-hover);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
   
   .feature-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     background: linear-gradient(135deg, rgba(221, 12, 240, 0.1), rgba(34, 211, 238, 0.1));
     border-radius: var(--radius-md);
     color: var(--color-accent-primary);
@@ -215,7 +309,7 @@ import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
   
   .feature-title {
     font-family: var(--font-display);
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     font-weight: 600;
     color: var(--color-text-primary);
     margin-bottom: var(--space-xs);
@@ -228,87 +322,132 @@ import { ArrowRight, Zap, Shield, Globe } from 'lucide-astro';
     line-height: 1.5;
   }
   
-  /* -- terminal preview - starship style */
-  .terminal-preview {
-    max-width: 600px;
+  /* -- chart visualization */
+  .chart-container {
+    position: relative;
+    max-width: 500px;
     margin: 0 auto;
-    background-color: var(--color-bg-dark);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    box-shadow: var(--shadow-xl);
-    animation: fade-in 0.6s ease 0.7s forwards;
+    animation: fade-in 0.8s ease 0.7s forwards;
     opacity: 0;
   }
   
-  .terminal-header {
+  .chart-svg {
+    width: 100%;
+    height: 100px;
+  }
+  
+  .chart-line {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    animation: draw-line 2s ease 1s forwards;
+  }
+  
+  @keyframes draw-line {
+    to { stroke-dashoffset: 0; }
+  }
+  
+  .chart-area {
+    opacity: 0;
+    animation: fade-area 1s ease 2s forwards;
+  }
+  
+  @keyframes fade-area {
+    to { opacity: 1; }
+  }
+  
+  .chart-dot {
+    opacity: 0;
+    transform-origin: center;
+    animation: pop-dot 0.3s ease forwards;
+  }
+  
+  .dot-1 { animation-delay: 1.5s; }
+  .dot-2 { animation-delay: 2s; }
+  .dot-3 { animation-delay: 2.5s; }
+  
+  @keyframes pop-dot {
+    0% { opacity: 0; transform: scale(0); }
+    50% { transform: scale(1.5); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  
+  /* -- floating stats */
+  .floating-stat {
+    position: absolute;
+    padding: var(--space-xs) var(--space-sm);
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: var(--space-md);
-    padding: var(--space-sm) var(--space-md);
-    background-color: rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    animation: float-in 0.5s ease forwards;
   }
   
-  .terminal-dots {
-    display: flex;
-    gap: 6px;
+  .stat-1 { top: -10px; left: 10%; animation-delay: 2.2s; }
+  .stat-2 { top: 30px; right: 5%; animation-delay: 2.5s; }
+  .stat-3 { bottom: 10px; left: 25%; animation-delay: 2.8s; }
+  
+  @keyframes float-in {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
   
-  .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-  }
-  
-  .dot.red { background-color: #ff5f56; }
-  .dot.yellow { background-color: #ffbd2e; }
-  .dot.green { background-color: #27c93f; }
-  
-  .terminal-title {
-    flex: 1;
-    text-align: center;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: rgba(255, 255, 255, 0.5);
-  }
-  
-  .terminal-body {
-    padding: var(--space-lg);
-    font-family: var(--font-mono);
+  .stat-value {
+    font-family: var(--font-display);
     font-size: var(--text-sm);
+    font-weight: 700;
+    background: linear-gradient(135deg, #dd0cf0, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
-  .terminal-line {
+  .stat-label {
+    font-size: 9px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  /* -- scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-xs);
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-text-muted);
+    animation: bounce 2s ease infinite;
+    transition: all var(--transition-fast);
   }
   
-  .prompt {
-    color: #dd0cf0;
-    font-weight: 600;
+  .scroll-indicator:hover {
+    border-color: var(--color-accent-primary);
+    color: var(--color-accent-primary);
   }
   
-  .branch {
-    color: rgba(255, 255, 255, 0.5);
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-8px); }
+    60% { transform: translateX(-50%) translateY(-4px); }
   }
   
-  .git-branch {
-    color: #7c3aed;
-    font-weight: 600;
-  }
-  
-  .arrow {
-    color: #22d3ee;
-    font-weight: 600;
-  }
-  
-  .command {
-    color: #22d3ee;
-  }
-  
-  .args {
-    color: rgba(255, 255, 255, 0.7);
+  @media (max-width: 640px) {
+    .floating-stat {
+      display: none;
+    }
+    
+    .chart-container {
+      margin-bottom: var(--space-xl);
+    }
   }
 </style>

@@ -24,7 +24,7 @@ const latestArticles = getAllArticles().slice(0, 4);
     <HeroSection />
     
     <!-- -- latest articles section -->
-    <section class="latest-section">
+    <section id="latest-stories" class="latest-section">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Latest Stories</h2>
@@ -81,8 +81,9 @@ const latestArticles = getAllArticles().slice(0, 4);
 <style>
   /* -- latest section styles */
   .latest-section {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
     background-color: var(--color-bg-secondary);
+    scroll-margin-top: 60px;
   }
   
   .section-header {
@@ -134,7 +135,7 @@ const latestArticles = getAllArticles().slice(0, 4);
   
   /* -- cta section styles */
   .cta-section {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
     background-color: var(--color-bg-primary);
   }
   
