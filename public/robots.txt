@@ -1,9 +1,7 @@
-# -- robots.txt for news-hub
 User-agent: *
 Allow: /
 
-# -- sitemap location
-Sitemap: https://news-hub.example.com/sitemap-index.xml
+Sitemap: https://news.fn-stella-inc.space/sitemap-index.xml
 
 # -- crawl delay
 Crawl-delay: 1

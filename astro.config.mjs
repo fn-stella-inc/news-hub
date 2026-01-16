@@ -1,21 +1,21 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel';
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://news-hub.vercel.app',
-  output: 'server',
+  site: "https://fn-stella-inc.space",
+  output: "server",
   adapter: vercel(),
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/api/'),
+      filter: (page) => !page.includes("/api/"),
     }),
   ],
   vite: {
     ssr: {
-      noExternal: ['lucide-astro'],
+      noExternal: ["lucide-astro"],
     },
   },
 });
