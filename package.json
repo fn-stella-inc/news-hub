@@ -2,17 +2,16 @@
   "name": "news-hub",
   "type": "module",
   "version": "1.0.0",
-  "description": "AI-powered news and technology platform built with Astro and HTMX",
+  "description": "AI-powered news platform built with Astro and Google Gemini",
   "scripts": {
     "dev": "astro dev",
-    "start": "node ./dist/server/entry.mjs",
+    "start": "bun ./dist/server/entry.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^4.16.0",
-    "htmx.org": "^2.0.0",
     "lucide-astro": "^0.447.0"
   },
   "devDependencies": {
@@ -24,7 +23,7 @@
     "news",
     "technology",
     "astro",
-    "htmx",
+    "gemini",
     "ai-content"
   ],
   "author": "",

@@ -1,57 +1,46 @@
-# -- news-hub dockerfile
-# -- multi-stage build for optimized production image
-
-# -- stage 1: dependencies
-FROM node:20-alpine AS deps
+# -- news hub dockerfile using bun
+FROM oven/bun:1 AS base
 WORKDIR /app
 
-# -- install dependencies only when needed
-COPY package.json package-lock.json* ./
-RUN npm ci --only=production
+# -- install dependencies
+FROM base AS deps
+COPY package.json bun.lockb* ./
+RUN bun install --frozen-lockfile
 
-# -- stage 2: builder
-FROM node:20-alpine AS builder
-WORKDIR /app
-
-# -- copy node modules from deps stage
+# -- build stage
+FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# -- set environment variables for build
+# -- set environment variables
 ENV NODE_ENV=production
 
 # -- build the application
-RUN npm run build
+RUN bun run build
 
-# -- stage 3: runner
-FROM node:20-alpine AS runner
+# -- production stage
+FROM oven/bun:1-slim AS runner
 WORKDIR /app
 
-# -- set environment to production
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=4321
 
-# -- create non-root user for security
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 astro
+# -- create non-root user
+RUN addgroup --system --gid 1001 bunjs && \
+    adduser --system --uid 1001 bunjs
 
-# -- copy built assets from builder
+# -- copy built assets
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-# -- set proper permissions
-RUN chown -R astro:nodejs /app
+# -- set ownership
+RUN chown -R bunjs:bunjs /app
 
-# -- switch to non-root user
-USER astro
+USER bunjs
 
-# -- expose the application port
 EXPOSE 4321
 
-# -- health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:4321/ || exit 1
-
-# -- start the application
-CMD ["node", "./dist/server/entry.mjs"]
+# -- start the server
+CMD ["bun", "run", "./dist/server/entry.mjs"]
