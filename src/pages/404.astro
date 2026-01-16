@@ -1,0 +1,170 @@
+---
+// -- 404 not found page
+import BaseLayout from '../layouts/base-layout.astro';
+import Navbar from '../components/navbar.astro';
+import Footer from '../components/footer.astro';
+import { Home, ArrowLeft, SearchX } from 'lucide-astro';
+---
+
+<BaseLayout 
+  title="Page Not Found"
+  description="The page you're looking for doesn't exist."
+  noIndex={true}
+>
+  <Navbar />
+  
+  <main id="main-content" class="not-found-page">
+    <div class="not-found-container">
+      <!-- -- icon -->
+      <div class="not-found-icon">
+        <SearchX size={64} strokeWidth={1.5} />
+      </div>
+      
+      <!-- -- error code -->
+      <h1 class="error-code">404</h1>
+      
+      <!-- -- title -->
+      <h2 class="error-title">Page Not Found</h2>
+      
+      <!-- -- description -->
+      <p class="error-description">
+        Oops! The page you're looking for doesn't exist or has been moved.
+      </p>
+      
+      <!-- -- action buttons -->
+      <div class="error-actions">
+        <a href="/" class="action-btn primary-btn">
+          <Home size={16} strokeWidth={2} />
+          <span>Go to Home</span>
+        </a>
+        <button onclick="history.back()" class="action-btn secondary-btn">
+          <ArrowLeft size={16} strokeWidth={2} />
+          <span>Go Back</span>
+        </button>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* -- not found page styles */
+  .not-found-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 200px);
+    padding: var(--space-2xl) var(--space-lg);
+  }
+  
+  .not-found-container {
+    text-align: center;
+    max-width: 480px;
+  }
+  
+  .not-found-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto var(--space-lg);
+    background: linear-gradient(135deg, rgba(221, 12, 240, 0.1), rgba(34, 211, 238, 0.1));
+    border-radius: var(--radius-2xl);
+    color: var(--color-accent-primary);
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .error-code {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #dd0cf0 0%, #7c3aed 40%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .error-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+  }
+  
+  .error-description {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
+    line-height: 1.6;
+  }
+  
+  .error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+  
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-lg);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-decoration: none;
+  }
+  
+  .primary-btn {
+    background: linear-gradient(135deg, #dd0cf0 0%, #7c3aed 100%);
+    color: white;
+    border: none;
+  }
+  
+  .primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(221, 12, 240, 0.5);
+    color: white;
+  }
+  
+  .secondary-btn {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+  }
+  
+  .secondary-btn:hover {
+    border-color: var(--color-accent-primary);
+    color: var(--color-accent-primary);
+    background-color: rgba(221, 12, 240, 0.05);
+  }
+  
+  @media (max-width: 480px) {
+    .error-code {
+      font-size: 4rem;
+    }
+    
+    .error-actions {
+      flex-direction: column;
+    }
+    
+    .action-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

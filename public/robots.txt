@@ -1,0 +1,12 @@
+# -- robots.txt for news-hub
+User-agent: *
+Allow: /
+
+# -- sitemap location
+Sitemap: https://news-hub.example.com/sitemap-index.xml
+
+# -- crawl delay
+Crawl-delay: 1
+
+# -- disallow admin/api paths
+Disallow: /api/
