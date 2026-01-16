@@ -5,7 +5,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://fn-stella-inc.space",
+  site: "https://news.fn-stella-inc.space",
   output: "server",
   adapter: vercel(),
   integrations: [
