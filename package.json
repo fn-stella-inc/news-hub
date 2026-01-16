@@ -5,18 +5,17 @@
   "description": "AI-powered news platform built with Astro and Google Gemini",
   "scripts": {
     "dev": "astro dev",
-    "start": "bun ./dist/server/entry.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.0",
+    "astro": "5.16.11",
     "lucide-astro": "^0.447.0"
   },
   "devDependencies": {
-    "@astrojs/node": "^8.3.0",
-    "@astrojs/sitemap": "^3.2.0",
+    "@astrojs/vercel": "9.0.4",
+    "@astrojs/sitemap": "3.7.0",
     "typescript": "^5.6.0"
   },
   "keywords": [

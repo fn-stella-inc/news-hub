@@ -1,21 +1,21 @@
-// -- astro configuration file
+// @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 
+// https://astro.build/config
 export default defineConfig({
-  site: 'https://news-hub.example.com',
-  integrations: [sitemap()],
-  output: 'hybrid',
-  adapter: node({
-    mode: 'standalone'
-  }),
-  build: {
-    assets: 'assets'
-  },
+  site: 'https://news-hub.vercel.app',
+  output: 'server',
+  adapter: vercel(),
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/api/'),
+    }),
+  ],
   vite: {
-    build: {
-      cssMinify: true
-    }
-  }
+    ssr: {
+      noExternal: ['lucide-astro'],
+    },
+  },
 });
