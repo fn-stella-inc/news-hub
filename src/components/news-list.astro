@@ -1,158 +1,164 @@
 ---
-// -- news list component with htmx infinite scroll
+// -- news list component - light theme
 import ArticleCard from './article-card.astro';
 import { Loader2 } from 'lucide-astro';
-
-interface Article {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  publishedAt: string;
-  readingTime?: number;
-  imageUrl?: string;
-}
+import type { Article } from '../lib/articles';
 
 interface Props {
   articles: Article[];
   category?: string;
   showLoadMore?: boolean;
-  initialPage?: number;
 }
 
-const { 
-  articles, 
-  category = 'all',
-  showLoadMore = true,
-  initialPage = 1,
-} = Astro.props;
-
-const nextPage = initialPage + 1;
-const apiUrl = category !== 'all' 
-  ? `/api/articles?category=${category}&page=${nextPage}`
-  : `/api/articles?page=${nextPage}`;
+const { articles, category = 'all', showLoadMore = true } = Astro.props;
 ---
 
-<div class="news-list-wrapper">
+<div class="news-list">
   <!-- -- articles grid -->
-  <div class="news-grid" id="news-grid">
-    {articles.map((article, index) => (
-      <ArticleCard
-        slug={article.slug}
-        title={article.title}
-        excerpt={article.excerpt}
-        category={article.category}
-        publishedAt={article.publishedAt}
-        readingTime={article.readingTime}
-        imageUrl={article.imageUrl}
-        featured={index === 0}
-      />
-    ))}
+  <div id="news-grid" class="news-grid">
+    {articles.length > 0 ? (
+      articles.map((article, index) => (
+        <ArticleCard
+          slug={article.slug}
+          title={article.title}
+          excerpt={article.excerpt}
+          category={article.category}
+          publishedAt={article.publishedAt}
+          readingTime={article.readingTime}
+          imageUrl={article.imageUrl}
+          featured={index === 0}
+        />
+      ))
+    ) : (
+      <div class="empty-state">
+        <p class="empty-message">No articles found in this category.</p>
+        <a href="/news" class="empty-link">View all articles</a>
+      </div>
+    )}
   </div>
   
-  <!-- -- load more section with htmx -->
-  {showLoadMore && (
-    <div class="load-more-container" id="load-more-container">
+  <!-- -- load more button -->
+  {showLoadMore && articles.length > 0 && (
+    <div class="load-more-wrapper">
       <button
         class="load-more-btn"
-        hx-get={apiUrl}
+        hx-get={`/api/articles?page=2&category=${category}`}
         hx-target="#news-grid"
         hx-swap="beforeend"
-        hx-trigger="click"
-        hx-indicator=".loading-indicator"
-        aria-label="Load more articles"
+        hx-indicator=".load-more-indicator"
+        data-page="1"
+        data-category={category}
       >
         <span class="btn-text">Load More Articles</span>
-        <span class="loading-indicator">
+        <span class="load-more-indicator">
           <Loader2 size={18} strokeWidth={2} class="spinner" />
-          <span>Loading...</span>
         </span>
       </button>
-    </div>
-  )}
-  
-  <!-- -- empty state -->
-  {articles.length === 0 && (
-    <div class="empty-state">
-      <p class="empty-message">No articles found in this category.</p>
-      <a href="/news" class="btn btn-secondary">View All News</a>
     </div>
   )}
 </div>
 
 <style>
-  /* -- news list wrapper */
-  .news-list-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xl);
+  /* -- news list styles - light theme */
+  .news-list {
+    width: 100%;
   }
   
-  /* -- news grid */
   .news-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
   }
   
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     .news-grid {
       grid-template-columns: 1fr;
     }
   }
   
-  /* -- load more */
-  .load-more-container {
+  /* -- empty state */
+  .empty-state {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3xl);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .empty-state {
+      grid-column: span 1;
+    }
+  }
+  
+  .empty-message {
+    color: var(--color-text-secondary);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-md);
+  }
+  
+  .empty-link {
+    color: var(--color-accent-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  /* -- load more button */
+  .load-more-wrapper {
     display: flex;
     justify-content: center;
-    padding: var(--space-lg) 0;
+    margin-top: var(--space-xl);
   }
   
   .load-more-btn {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-sm);
-    min-width: 200px;
-    padding: var(--space-md) var(--space-xl);
-    background-color: transparent;
-    border: 2px solid var(--color-border);
+    padding: var(--space-md) var(--space-2xl);
+    background: linear-gradient(135deg, #dd0cf0 0%, #7c3aed 100%);
+    border: none;
     border-radius: var(--radius-lg);
-    color: var(--color-text-primary);
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
+    color: white;
+    font-family: var(--font-display);
+    font-size: var(--text-base);
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     cursor: pointer;
     transition: all var(--transition-base);
+    position: relative;
   }
   
   .load-more-btn:hover {
-    border-color: var(--color-accent-primary);
-    color: var(--color-accent-primary);
-    background-color: rgba(255, 107, 53, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(221, 12, 240, 0.5);
   }
   
-  .load-more-btn:focus-visible {
-    outline: 2px solid var(--color-accent-primary);
-    outline-offset: 2px;
+  .load-more-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
   }
   
-  /* -- loading indicator */
-  .loading-indicator {
+  .load-more-indicator {
     display: none;
-    align-items: center;
-    gap: var(--space-xs);
   }
   
   .load-more-btn.htmx-request .btn-text {
-    display: none;
+    opacity: 0;
   }
   
-  .load-more-btn.htmx-request .loading-indicator {
+  .load-more-btn.htmx-request .load-more-indicator {
     display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .spinner {
@@ -163,53 +169,31 @@ const apiUrl = category !== 'all'
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
-  
-  /* -- empty state */
-  .empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-lg);
-    padding: var(--space-3xl);
-    text-align: center;
-    background-color: var(--color-bg-card);
-    border: 1px dashed var(--color-border);
-    border-radius: var(--radius-lg);
-  }
-  
-  .empty-message {
-    color: var(--color-text-muted);
-    font-size: var(--text-lg);
-    margin: 0;
-  }
 </style>
 
 <script is:inline>
-  // -- htmx event handlers for load more functionality
+  // -- handle load more button updates
   document.addEventListener('htmx:afterRequest', function(event) {
-    // -- check if load more button was clicked
-    if (event.target.classList.contains('load-more-btn')) {
-      // -- update the api url for next page
-      const currentPage = parseInt(new URL(event.detail.pathInfo.requestPath, window.location.origin).searchParams.get('page') || '2');
+    const btn = event.target;
+    if (btn.classList.contains('load-more-btn')) {
+      const currentPage = parseInt(btn.dataset.page) || 1;
       const nextPage = currentPage + 1;
-      const url = new URL(event.detail.pathInfo.requestPath, window.location.origin);
-      url.searchParams.set('page', nextPage.toString());
-      event.target.setAttribute('hx-get', url.pathname + url.search);
-      htmx.process(event.target);
+      const category = btn.dataset.category;
+      
+      btn.dataset.page = nextPage.toString();
+      btn.setAttribute('hx-get', `/api/articles?page=${nextPage + 1}&category=${category}`);
+      
+      // -- re-initialize htmx for the button
+      htmx.process(btn);
     }
   });
   
   // -- hide load more button when no more articles
-  document.addEventListener('htmx:afterSwap', function(event) {
-    if (event.detail.target.id === 'news-grid') {
-      // -- check if response is empty or contains end marker
-      const response = event.detail.xhr.responseText;
-      if (!response.trim() || response.includes('data-end-of-articles')) {
-        const loadMoreContainer = document.getElementById('load-more-container');
-        if (loadMoreContainer) {
-          loadMoreContainer.style.display = 'none';
-        }
+  document.addEventListener('htmx:beforeSwap', function(event) {
+    if (event.detail.xhr.getResponseHeader('X-No-More-Articles') === 'true') {
+      const btn = event.target;
+      if (btn.classList.contains('load-more-btn')) {
+        btn.style.display = 'none';
       }
     }
   });

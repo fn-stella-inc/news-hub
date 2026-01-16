@@ -7,7 +7,10 @@
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles/*"],
-      "@lib/*": ["src/lib/*"]
-    }
+      "@lib/*": ["src/lib/*"],
+      "@data/*": ["src/data/*"]
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }

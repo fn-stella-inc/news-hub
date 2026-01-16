@@ -34,15 +34,15 @@ A modern, AI-powered news platform built with Astro and HTMX. News Hub delivers 
 
 ## Tech Stack
 
-| Category         | Technology                      |
-| ---------------- | ------------------------------- |
-| Framework        | Astro 4.x                       |
-| Interactivity    | HTMX 2.x                        |
-| Icons            | Lucide                          |
-| Styling          | CSS Custom Properties           |
-| Fonts            | Playfair Display, Source Sans 3 |
-| Build            | Vite                            |
-| Containerization | Docker                          |
+| Category | Technology |
+|----------|------------|
+| Framework | Astro 4.x |
+| Interactivity | HTMX 2.x |
+| Icons | Lucide |
+| Styling | CSS Custom Properties |
+| Fonts | Playfair Display, Source Sans 3 |
+| Build | Vite |
+| Containerization | Docker |
 
 ## Project Structure
 
@@ -180,15 +180,15 @@ docker run -d -p 4321:4321 --name news-hub news-hub
 
 ### Environment Variables
 
-| Variable            | Description                       | Default                 |
-| ------------------- | --------------------------------- | ----------------------- |
-| `SITE_URL`          | Public URL of the site            | `http://localhost:4321` |
-| `SITE_NAME`         | Name displayed in metadata        | `News Hub`              |
-| `AI_API_KEY`        | API key for AI content generation | -                       |
-| `AI_API_URL`        | Endpoint for AI content API       | -                       |
-| `ENABLE_AI_CONTENT` | Enable AI content features        | `true`                  |
-| `ENABLE_NEWSLETTER` | Enable newsletter subscription    | `true`                  |
-| `NODE_ENV`          | Environment mode                  | `development`           |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `SITE_URL` | Public URL of the site | `http://localhost:4321` |
+| `SITE_NAME` | Name displayed in metadata | `News Hub` |
+| `AI_API_KEY` | API key for AI content generation | - |
+| `AI_API_URL` | Endpoint for AI content API | - |
+| `ENABLE_AI_CONTENT` | Enable AI content features | `true` |
+| `ENABLE_NEWSLETTER` | Enable newsletter subscription | `true` |
+| `NODE_ENV` | Environment mode | `development` |
 
 ### Astro Configuration
 
@@ -207,11 +207,11 @@ Fetch paginated articles with optional filtering.
 
 Query Parameters:
 
-| Parameter  | Type   | Default | Description        |
-| ---------- | ------ | ------- | ------------------ |
-| `page`     | number | 1       | Page number        |
-| `limit`    | number | 6       | Articles per page  |
-| `category` | string | all     | Filter by category |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `page` | number | 1 | Page number |
+| `limit` | number | 6 | Articles per page |
+| `category` | string | all | Filter by category |
 
 Response (JSON):
 
@@ -274,8 +274,8 @@ Change fonts in `base-layout.astro` and update CSS variables:
 
 ```css
 :root {
-  --font-display: "Your Display Font", serif;
-  --font-body: "Your Body Font", sans-serif;
+  --font-display: 'Your Display Font', serif;
+  --font-body: 'Your Body Font', sans-serif;
 }
 ```
 

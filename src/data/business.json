@@ -1,0 +1,40 @@
+{
+  "category": "business",
+  "label": "Business",
+  "description": "Business news, market trends and entrepreneurship",
+  "articles": [
+    {
+      "slug": "global-markets-react-policy-changes",
+      "title": "Global Markets React to Major Economic Policy Changes",
+      "excerpt": "Stock markets worldwide experienced significant volatility as central banks announced coordinated policy adjustments.",
+      "content": "<p>In a rare display of international coordination, major central banks have announced synchronized policy changes aimed at stabilizing global financial markets.</p><h2>Coordinated Action</h2><p>The coordinated action comes amid growing concerns about inflation and economic uncertainty affecting multiple regions simultaneously. This level of cooperation hasn't been seen since the 2008 financial crisis.</p><h2>Market Response</h2><p>Initial market reactions were mixed, with some sectors rallying on expectations of easier monetary policy while others sold off on inflation concerns.</p><h2>Long-term Implications</h2><p>Market analysts suggest this could mark the beginning of a new era in international monetary cooperation, with implications for currency markets and global trade.</p>",
+      "publishedAt": "2025-01-13T09:15:00Z",
+      "readingTime": 5,
+      "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=450&fit=crop",
+      "author": "News Hub AI",
+      "tags": ["finance", "markets", "economy"]
+    },
+    {
+      "slug": "startup-funding-trends",
+      "title": "Startup Funding Landscape: What Founders Need to Know in 2025",
+      "excerpt": "Venture capital patterns are shifting as investors prioritize profitability over growth at all costs.",
+      "content": "<p>The startup funding environment has evolved dramatically, with investors now placing greater emphasis on sustainable business models and clear paths to profitability.</p><h2>The End of Growth at All Costs</h2><p>The era of unlimited funding for hypergrowth companies appears to be ending. Investors are scrutinizing unit economics and demanding realistic projections.</p><h2>Sector Focus</h2><p>AI and climate tech continue to attract significant interest, while consumer apps and some SaaS categories face more challenging funding environments.</p><h2>Alternative Funding Sources</h2><p>Revenue-based financing, crowdfunding, and strategic corporate investments are gaining popularity as alternatives to traditional venture capital.</p><blockquote>Smart founders are building businesses that can thrive regardless of funding market conditions.</blockquote>",
+      "publishedAt": "2025-01-10T15:00:00Z",
+      "readingTime": 7,
+      "imageUrl": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=450&fit=crop",
+      "author": "News Hub AI",
+      "tags": ["startups", "venture-capital", "entrepreneurship"]
+    },
+    {
+      "slug": "ecommerce-trends-2025",
+      "title": "E-commerce Evolution: How Online Shopping is Changing",
+      "excerpt": "From social commerce to AI personalization, the online retail landscape continues to transform rapidly.",
+      "content": "<p>The e-commerce industry is experiencing a new wave of innovation that's reshaping how consumers discover and purchase products online.</p><h2>Social Commerce Takes Center Stage</h2><p>Shopping directly through social media platforms has become mainstream, with integrated checkout experiences making purchases seamless.</p><h2>AI-Powered Personalization</h2><p>Machine learning algorithms are creating hyper-personalized shopping experiences, predicting what customers want before they search for it.</p><h2>Sustainability Focus</h2><p>Consumers are increasingly demanding sustainable options, pushing retailers to offer eco-friendly products and transparent supply chains.</p>",
+      "publishedAt": "2025-01-08T10:00:00Z",
+      "readingTime": 6,
+      "imageUrl": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=450&fit=crop",
+      "author": "News Hub AI",
+      "tags": ["ecommerce", "retail", "digital-transformation"]
+    }
+  ]
+}

@@ -1,88 +1,61 @@
 ---
-// -- footer component
-import { Newspaper, Github, Twitter, Linkedin, Mail, Rss, Heart, ExternalLink } from 'lucide-astro';
+// -- footer component - light theme with logo
+import { Github, Twitter, Linkedin, Mail, Heart, Rss } from 'lucide-astro';
 
 const currentYear = new Date().getFullYear();
 
-interface FooterLink {
-  label: string;
-  href: string;
-  external?: boolean;
-}
+const footerLinks = {
+  categories: [
+    { label: 'Technology', href: '/news?category=technology' },
+    { label: 'Topics', href: '/news?category=topics' },
+    { label: 'Science', href: '/news?category=science' },
+    { label: 'Business', href: '/news?category=business' },
+    { label: 'Culture', href: '/news?category=culture' },
+  ],
+  resources: [
+    { label: 'Documentation', href: '#' },
+    { label: 'API Reference', href: '#' },
+    { label: 'RSS Feed', href: '/rss.xml' },
+    { label: 'Changelog', href: '#' },
+  ],
+  company: [
+    { label: 'About Us', href: '#' },
+    { label: 'Contact', href: '#' },
+    { label: 'Privacy Policy', href: '#' },
+    { label: 'Terms of Service', href: '#' },
+  ],
+};
 
-interface FooterSection {
-  title: string;
-  links: FooterLink[];
-}
-
-const footerSections: FooterSection[] = [
-  {
-    title: 'Categories',
-    links: [
-      { label: 'Technology', href: '/news?category=technology' },
-      { label: 'Science', href: '/news?category=science' },
-      { label: 'Business', href: '/news?category=business' },
-      { label: 'Culture', href: '/news?category=culture' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Contact', href: '/contact' },
-      { label: 'RSS Feed', href: '/rss.xml' },
-      { label: 'Sitemap', href: '/sitemap-index.xml' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Cookie Policy', href: '/cookies' },
-    ],
-  },
-];
-
-interface SocialLink {
-  label: string;
-  href: string;
-  icon: string;
-}
-
-const socialLinks: SocialLink[] = [
-  { label: 'GitHub', href: 'https://github.com', icon: 'github' },
-  { label: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
-  { label: 'Email', href: 'mailto:contact@news-hub.example.com', icon: 'mail' },
+const socialLinks = [
+  { icon: 'github', href: 'https://github.com', label: 'GitHub' },
+  { icon: 'twitter', href: 'https://twitter.com', label: 'Twitter' },
+  { icon: 'linkedin', href: 'https://linkedin.com', label: 'LinkedIn' },
+  { icon: 'mail', href: 'mailto:hello@newshub.com', label: 'Email' },
 ];
 ---
 
 <footer class="footer">
   <div class="footer-container">
-    <!-- -- footer top section -->
-    <div class="footer-top">
-      <!-- -- brand column -->
+    <!-- -- main footer content -->
+    <div class="footer-grid">
+      <!-- -- brand section with logo -->
       <div class="footer-brand">
-        <a href="/" class="brand-link" aria-label="News Hub Home">
+        <a href="/" class="brand-link">
           <div class="brand-icon">
-            <Newspaper size={24} strokeWidth={1.5} />
+            <img src="/logo.webp" alt="News Hub Logo" class="brand-logo" />
           </div>
-          <span class="brand-text">
-            <span class="brand-name">News</span>
-            <span class="brand-accent">Hub</span>
-          </span>
+          <span class="brand-text">News Hub</span>
         </a>
         <p class="brand-description">
-          Your trusted source for the latest news, technology updates, and diverse topics. 
-          Powered by AI to deliver fresh content daily.
+          Your source for the latest news, technology updates, and diverse topics powered by AI.
         </p>
+        
         <!-- -- social links -->
         <div class="social-links">
           {socialLinks.map((social) => (
             <a 
               href={social.href} 
-              class="social-link"
+              class="social-link" 
               aria-label={social.label}
               target="_blank"
               rel="noopener noreferrer"
@@ -96,153 +69,125 @@ const socialLinks: SocialLink[] = [
         </div>
       </div>
       
-      <!-- -- footer links columns -->
-      <div class="footer-links">
-        {footerSections.map((section) => (
-          <div class="footer-column">
-            <h3 class="column-title">{section.title}</h3>
-            <ul class="column-list">
-              {section.links.map((link) => (
-                <li>
-                  <a 
-                    href={link.href} 
-                    class="column-link"
-                    target={link.external ? '_blank' : undefined}
-                    rel={link.external ? 'noopener noreferrer' : undefined}
-                  >
-                    {link.label}
-                    {link.external && <ExternalLink size={12} strokeWidth={2} />}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-    
-    <!-- -- newsletter subscription -->
-    <div class="newsletter-section">
-      <div class="newsletter-content">
-        <div class="newsletter-text">
-          <h3 class="newsletter-title">Stay Updated</h3>
-          <p class="newsletter-description">
-            Subscribe to our newsletter for the latest news delivered to your inbox.
-          </p>
+      <!-- -- links sections -->
+      <div class="footer-links-group">
+        <div class="footer-links">
+          <h4 class="links-title">Categories</h4>
+          <ul class="links-list">
+            {footerLinks.categories.map((link) => (
+              <li>
+                <a href={link.href} class="footer-link">{link.label}</a>
+              </li>
+            ))}
+          </ul>
         </div>
-        <form 
-          class="newsletter-form"
-          hx-post="/api/subscribe"
-          hx-swap="innerHTML"
-          hx-target=".newsletter-response"
-        >
-          <div class="input-group">
-            <label for="email-input" class="visually-hidden">Email address</label>
-            <input 
-              type="email" 
-              id="email-input"
-              name="email"
-              placeholder="Enter your email"
-              required
-              class="newsletter-input"
-            />
-            <button type="submit" class="newsletter-btn">
-              <Rss size={18} strokeWidth={2} />
-              <span>Subscribe</span>
-            </button>
-          </div>
-          <div class="newsletter-response" aria-live="polite"></div>
-        </form>
+        
+        <div class="footer-links">
+          <h4 class="links-title">Resources</h4>
+          <ul class="links-list">
+            {footerLinks.resources.map((link) => (
+              <li>
+                <a href={link.href} class="footer-link">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4 class="links-title">Company</h4>
+          <ul class="links-list">
+            {footerLinks.company.map((link) => (
+              <li>
+                <a href={link.href} class="footer-link">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
     
     <!-- -- footer bottom -->
     <div class="footer-bottom">
       <p class="copyright">
-        &copy; {currentYear} News Hub. All rights reserved.
+        © {currentYear} News Hub. Made with 
+        <Heart size={14} strokeWidth={2} class="heart-icon" />
+        by AI
       </p>
-      <p class="made-with">
-        Made with <Heart size={14} strokeWidth={2} class="heart-icon" /> using Astro & HTMX
-      </p>
+      <a href="/rss.xml" class="rss-link">
+        <Rss size={16} strokeWidth={2} />
+        <span>RSS Feed</span>
+      </a>
     </div>
   </div>
 </footer>
 
 <style>
-  /* -- footer styles */
+  /* -- footer styles - light theme */
   .footer {
     background-color: var(--color-bg-secondary);
     border-top: 1px solid var(--color-border);
-    margin-top: auto;
+    padding: var(--space-3xl) 0 var(--space-xl);
   }
   
   .footer-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: var(--space-3xl) var(--space-lg);
+    padding: 0 var(--space-lg);
   }
   
-  /* -- footer top section */
-  .footer-top {
+  .footer-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
-    padding-bottom: var(--space-2xl);
-    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-2xl);
   }
   
   @media (min-width: 768px) {
-    .footer-top {
+    .footer-grid {
       grid-template-columns: 1.5fr 2fr;
     }
   }
   
-  /* -- brand column */
+  /* -- brand section */
   .footer-brand {
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: var(--space-md);
   }
   
   .brand-link {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    color: var(--color-text-primary);
     text-decoration: none;
     width: fit-content;
   }
   
   .brand-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-tertiary));
+    width: 40px;
+    height: 40px;
     border-radius: var(--radius-md);
-    color: var(--color-bg-primary);
+    overflow: hidden;
+  }
+  
+  .brand-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   
   .brand-text {
     font-family: var(--font-display);
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
     font-weight: 700;
-  }
-  
-  .brand-name {
     color: var(--color-text-primary);
   }
   
-  .brand-accent {
-    color: var(--color-accent-primary);
-  }
-  
   .brand-description {
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
     font-size: var(--text-sm);
-    line-height: 1.7;
-    max-width: 300px;
+    line-height: 1.6;
+    max-width: 280px;
     margin: 0;
   }
   
@@ -250,6 +195,7 @@ const socialLinks: SocialLink[] = [
   .social-links {
     display: flex;
     gap: var(--space-sm);
+    margin-top: var(--space-sm);
   }
   
   .social-link {
@@ -258,7 +204,7 @@ const socialLinks: SocialLink[] = [
     justify-content: center;
     width: 36px;
     height: 36px;
-    background-color: var(--color-bg-tertiary);
+    background-color: var(--color-bg-primary);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     color: var(--color-text-secondary);
@@ -266,49 +212,87 @@ const socialLinks: SocialLink[] = [
   }
   
   .social-link:hover {
-    background-color: var(--color-accent-primary);
     border-color: var(--color-accent-primary);
-    color: var(--color-bg-primary);
-    transform: translateY(-2px);
+    color: var(--color-accent-primary);
+    background-color: rgba(221, 12, 240, 0.05);
   }
   
-  /* -- footer links */
-  .footer-links {
+  /* -- links group */
+  .footer-links-group {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-xl);
   }
   
-  @media (min-width: 640px) {
-    .footer-links {
-      grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 640px) {
+    .footer-links-group {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-links:last-child {
+      grid-column: span 2;
     }
   }
   
-  .footer-column {
+  .footer-links {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
   }
   
-  .column-title {
-    font-family: var(--font-body);
+  .links-title {
+    font-family: var(--font-display);
     font-size: var(--text-sm);
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
     color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   
-  .column-list {
+  .links-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
   }
   
-  .column-link {
-    display: inline-flex;
+  .footer-link {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    transition: color var(--transition-fast);
+  }
+  
+  .footer-link:hover {
+    color: var(--color-accent-primary);
+  }
+  
+  /* -- footer bottom */
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .copyright {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+  
+  .heart-icon {
+    color: var(--color-accent-primary);
+    fill: var(--color-accent-primary);
+  }
+  
+  .rss-link {
+    display: flex;
     align-items: center;
     gap: var(--space-xs);
     color: var(--color-text-muted);
@@ -316,145 +300,7 @@ const socialLinks: SocialLink[] = [
     transition: color var(--transition-fast);
   }
   
-  .column-link:hover {
+  .rss-link:hover {
     color: var(--color-accent-primary);
-  }
-  
-  /* -- newsletter section */
-  .newsletter-section {
-    padding: var(--space-2xl) 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-  
-  .newsletter-content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-    align-items: center;
-    text-align: center;
-  }
-  
-  @media (min-width: 768px) {
-    .newsletter-content {
-      flex-direction: row;
-      justify-content: space-between;
-      text-align: left;
-    }
-  }
-  
-  .newsletter-text {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
-  
-  .newsletter-title {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    color: var(--color-text-primary);
-  }
-  
-  .newsletter-description {
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    margin: 0;
-  }
-  
-  .newsletter-form {
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .input-group {
-    display: flex;
-    gap: var(--space-sm);
-  }
-  
-  .newsletter-input {
-    flex: 1;
-    padding: var(--space-sm) var(--space-md);
-    background-color: var(--color-bg-tertiary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    color: var(--color-text-primary);
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
-    transition: border-color var(--transition-fast);
-  }
-  
-  .newsletter-input::placeholder {
-    color: var(--color-text-muted);
-  }
-  
-  .newsletter-input:focus {
-    outline: none;
-    border-color: var(--color-accent-primary);
-  }
-  
-  .newsletter-btn {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-sm) var(--space-lg);
-    background-color: var(--color-accent-primary);
-    border: none;
-    border-radius: var(--radius-md);
-    color: var(--color-bg-primary);
-    font-family: var(--font-body);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    white-space: nowrap;
-  }
-  
-  .newsletter-btn:hover {
-    background-color: var(--color-accent-secondary);
-    transform: translateY(-2px);
-  }
-  
-  .newsletter-response {
-    margin-top: var(--space-sm);
-    font-size: var(--text-sm);
-  }
-  
-  /* -- footer bottom */
-  .footer-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-sm);
-    padding-top: var(--space-xl);
-    text-align: center;
-  }
-  
-  @media (min-width: 640px) {
-    .footer-bottom {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-  
-  .copyright,
-  .made-with {
-    color: var(--color-text-muted);
-    font-size: var(--text-xs);
-    margin: 0;
-  }
-  
-  .made-with {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-  }
-  
-  .heart-icon {
-    color: var(--color-accent-primary);
-    animation: heartbeat 1.5s ease infinite;
-  }
-  
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
   }
 </style>

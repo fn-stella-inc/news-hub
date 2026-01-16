@@ -1,0 +1,40 @@
+{
+  "category": "science",
+  "label": "Science",
+  "description": "Scientific discoveries, research and breakthroughs",
+  "articles": [
+    {
+      "slug": "quantum-computing-breakthrough",
+      "title": "Scientists Achieve Major Quantum Computing Breakthrough",
+      "excerpt": "Researchers have developed a new error-correction method that brings practical quantum computers closer to reality.",
+      "content": "<p>In a groundbreaking development, a team of international researchers has announced a significant advancement in quantum error correction, addressing one of the most challenging obstacles in quantum computing.</p><h2>The Error Correction Challenge</h2><p>Quantum computers are inherently susceptible to errors due to quantum decoherence—the tendency of qubits to lose their quantum properties when interacting with the environment.</p><h2>A New Approach</h2><p>The new technique reduces quantum decoherence by an order of magnitude, allowing quantum bits (qubits) to maintain their states for unprecedented periods. This was achieved through a novel combination of hardware and software innovations.</p><h2>Practical Implications</h2><p>This breakthrough could accelerate the timeline for achieving quantum supremacy in practical applications, from drug discovery to climate modeling.</p>",
+      "publishedAt": "2025-01-14T14:30:00Z",
+      "readingTime": 6,
+      "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=450&fit=crop",
+      "author": "News Hub AI",
+      "tags": ["quantum-computing", "science", "research"]
+    },
+    {
+      "slug": "sustainable-energy-milestone",
+      "title": "Renewable Energy Reaches Historic Milestone",
+      "excerpt": "For the first time, renewable sources generated more electricity than fossil fuels across multiple major economies.",
+      "content": "<p>A historic milestone has been achieved as renewable energy sources have surpassed fossil fuels in electricity generation across several major economies simultaneously.</p><h2>Solar and Wind Lead the Charge</h2><p>Solar and wind power led the transition, benefiting from years of investment and technological improvements that have dramatically reduced costs. Grid-scale battery storage has also played a crucial role.</p><h2>Economic Implications</h2><p>The economics of renewable energy have fundamentally shifted. In most markets, new solar and wind installations are now cheaper than operating existing fossil fuel plants.</p><h2>The Path Forward</h2><p>This shift represents a crucial step toward meeting global climate goals and demonstrates the viability of clean energy at scale. However, significant challenges remain in grid modernization and storage.</p>",
+      "publishedAt": "2025-01-11T11:00:00Z",
+      "readingTime": 6,
+      "imageUrl": "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=450&fit=crop",
+      "author": "News Hub AI",
+      "tags": ["renewable-energy", "climate", "sustainability"]
+    },
+    {
+      "slug": "space-exploration-new-era",
+      "title": "Space Exploration Enters a New Commercial Era",
+      "excerpt": "Private companies are leading ambitious missions that promise to transform our relationship with space.",
+      "content": "<p>The commercialization of space has reached a tipping point, with private companies now leading missions that were once the exclusive domain of government agencies.</p><h2>Private Sector Innovation</h2><p>From satellite internet constellations to lunar mining ventures, entrepreneurs are investing billions in projects that promise returns both financial and scientific.</p><h2>Democratizing Access</h2><p>Launch costs have plummeted thanks to reusable rockets, making space accessible to a wider range of organizations and even individuals. CubeSats and small payloads are now within reach of universities and startups.</p><h2>Looking Ahead</h2><p>This shift is accelerating innovation in ways previously unimaginable. Mars colonization, asteroid mining, and space tourism are no longer science fiction but active business plans.</p>",
+      "publishedAt": "2025-01-09T13:20:00Z",
+      "readingTime": 7,
+      "imageUrl": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&h=450&fit=crop",
+      "author": "News Hub AI",
+      "tags": ["space", "exploration", "commercial-space"]
+    }
+  ]
+}

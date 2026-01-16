@@ -1,6 +1,6 @@
 ---
-// -- category filter component with htmx
-import { Grid3X3, Cpu, FlaskConical, Briefcase, Palette } from 'lucide-astro';
+// -- category filter component - light theme
+import { Grid3X3, Cpu, FlaskConical, Briefcase, Palette, BookOpen } from 'lucide-astro';
 
 interface Category {
   slug: string;
@@ -17,6 +17,7 @@ const { activeCategory = 'all' } = Astro.props;
 const categories: Category[] = [
   { slug: 'all', label: 'All', icon: 'grid' },
   { slug: 'technology', label: 'Technology', icon: 'cpu' },
+  { slug: 'topics', label: 'Topics', icon: 'book' },
   { slug: 'science', label: 'Science', icon: 'flask' },
   { slug: 'business', label: 'Business', icon: 'briefcase' },
   { slug: 'culture', label: 'Culture', icon: 'palette' },
@@ -43,6 +44,7 @@ const categories: Category[] = [
       >
         {category.icon === 'grid' && <Grid3X3 size={16} strokeWidth={2} />}
         {category.icon === 'cpu' && <Cpu size={16} strokeWidth={2} />}
+        {category.icon === 'book' && <BookOpen size={16} strokeWidth={2} />}
         {category.icon === 'flask' && <FlaskConical size={16} strokeWidth={2} />}
         {category.icon === 'briefcase' && <Briefcase size={16} strokeWidth={2} />}
         {category.icon === 'palette' && <Palette size={16} strokeWidth={2} />}
@@ -58,7 +60,7 @@ const categories: Category[] = [
 </nav>
 
 <style>
-  /* -- category filter styles */
+  /* -- category filter styles - light theme */
   .category-filter {
     position: relative;
     margin-bottom: var(--space-xl);
@@ -71,7 +73,7 @@ const categories: Category[] = [
     padding: var(--space-sm);
     background-color: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
   }
   
   .filter-btn {
@@ -81,8 +83,9 @@ const categories: Category[] = [
     padding: var(--space-sm) var(--space-md);
     background-color: transparent;
     border: 1px solid transparent;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     color: var(--color-text-secondary);
+    font-family: var(--font-display);
     font-size: var(--text-sm);
     font-weight: 500;
     text-decoration: none;
@@ -96,14 +99,14 @@ const categories: Category[] = [
   }
   
   .filter-btn-active {
-    background-color: var(--color-accent-primary);
-    color: var(--color-bg-primary);
-    border-color: var(--color-accent-primary);
+    background: linear-gradient(135deg, #dd0cf0 0%, #7c3aed 100%);
+    color: white;
+    border-color: transparent;
   }
   
   .filter-btn-active:hover {
-    background-color: var(--color-accent-secondary);
-    color: var(--color-bg-primary);
+    color: white;
+    background: linear-gradient(135deg, #c40bd6 0%, #6d28d9 100%);
   }
   
   /* -- loading indicator */
@@ -125,12 +128,7 @@ const categories: Category[] = [
   
   .loading-bar {
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--color-accent-primary),
-      transparent
-    );
+    background: var(--color-accent-gradient);
     animation: loading-slide 1s ease infinite;
   }
   

@@ -1,5 +1,5 @@
 ---
-// -- article card component for news items
+// -- article card component - light theme
 import { Clock, ArrowUpRight, Tag } from 'lucide-astro';
 
 interface Props {
@@ -38,6 +38,7 @@ const formatDate = (dateString: string) => {
 const getCategoryColor = (cat: string) => {
   const colors: Record<string, string> = {
     technology: 'category-tech',
+    topics: 'category-topics',
     science: 'category-science',
     business: 'category-business',
     culture: 'category-culture',
@@ -94,11 +95,11 @@ const getCategoryColor = (cat: string) => {
 </article>
 
 <style>
-  /* -- article card styles */
+  /* -- article card styles - light theme */
   .article-card {
     background-color: var(--color-bg-card);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     overflow: hidden;
     transition: all var(--transition-base);
   }
@@ -141,7 +142,7 @@ const getCategoryColor = (cat: string) => {
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(10, 10, 11, 0.3) 100%
+      rgba(0, 0, 0, 0.1) 100%
     );
     opacity: 0;
     transition: opacity var(--transition-base);
@@ -174,31 +175,35 @@ const getCategoryColor = (cat: string) => {
     align-items: center;
     gap: var(--space-xs);
     padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     font-size: var(--text-xs);
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    text-transform: capitalize;
   }
   
   .category-tech {
-    background-color: rgba(46, 196, 182, 0.15);
-    color: var(--color-accent-tertiary);
+    background-color: rgba(34, 211, 238, 0.1);
+    color: #0891b2;
+  }
+  
+  .category-topics {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
   }
   
   .category-science {
-    background-color: rgba(139, 92, 246, 0.15);
-    color: #8b5cf6;
+    background-color: rgba(139, 92, 246, 0.1);
+    color: #7c3aed;
   }
   
   .category-business {
-    background-color: rgba(255, 107, 53, 0.15);
-    color: var(--color-accent-primary);
+    background-color: rgba(221, 12, 240, 0.1);
+    color: #c026d3;
   }
   
   .category-culture {
-    background-color: rgba(236, 72, 153, 0.15);
-    color: #ec4899;
+    background-color: rgba(236, 72, 153, 0.1);
+    color: #db2777;
   }
   
   .category-default {
@@ -255,10 +260,9 @@ const getCategoryColor = (cat: string) => {
     gap: var(--space-xs);
     margin-top: var(--space-sm);
     color: var(--color-accent-primary);
+    font-family: var(--font-display);
     font-size: var(--text-sm);
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
   
   .action-icon {
