@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://news.fn-stella-inc.space/sitemap-index.xml
+Sitemap: https://lc-nixos.space/sitemap-index.xml
 
 # -- crawl delay
 Crawl-delay: 1

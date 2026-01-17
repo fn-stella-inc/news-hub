@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "https://www.lc-nixos.space/:path*",
+      "destination": "https://lc-nixos.space/:path*",
+      "permanent": true
+    },
+    {
+      "source": "http://lc-nixos.space/:path*",
+      "destination": "https://lc-nixos.space/:path*",
+      "permanent": true
+    }
+  ]
+}

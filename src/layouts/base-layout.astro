@@ -20,16 +20,19 @@ const {
   noIndex = false,
 } = Astro.props;
 
-const siteUrl = import.meta.env.SITE_URL || 'https://news-hub.example.com';
-const fullCanonicalUrl = canonicalUrl || Astro.url.href;
+const siteUrl = import.meta.env.SITE_URL || 'https://lc-nixos.space';
+const fullCanonicalUrl = canonicalUrl
+  ? (canonicalUrl.startsWith('http') ? canonicalUrl : `${siteUrl}${canonicalUrl}`)
+  : Astro.url.href;
+
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2161761975943971"
-     crossorigin="anonymous"></script>
+    <!-- -- google adsense account -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2161761975943971" crossorigin="anonymous"></script> -->
 
     <!-- -- meta charset and viewport -->
     <meta charset="UTF-8" />
@@ -46,7 +49,11 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
     <meta name="googlebot" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
 
     <!-- -- google search console verification -->
-    <meta name="google-site-verification" content="X-_1dsSQwZoXkyACsM2wo_Fdw3FwyYoIGwsFSQmmJts" />
+    <!-- <meta name="google-site-verification" content="X-_1dsSQwZoXkyACsM2wo_Fdw3FwyYoIGwsFSQmmJts" /> -->
+
+    <!-- -- google adsense account -->
+    <!-- <meta name="google-adsense-account" content="ca-pub-2161761975943971"> -->
+
     
     <!-- -- canonical url -->
     <link rel="canonical" href={fullCanonicalUrl} />
@@ -73,7 +80,6 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}
     <meta name="color-scheme" content="light" />
     <meta name="format-detection" content="telephone=no" />
     
-    <meta name="google-adsense-account" content="ca-pub-2161761975943971">
     
     <!-- -- favicon and icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
