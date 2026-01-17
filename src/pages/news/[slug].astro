@@ -1,15 +1,16 @@
 ---
 // -- individual article page - light theme
-import BaseLayout from '../../layouts/base-layout.astro';
-import Navbar from '../../components/navbar.astro';
-import Footer from '../../components/footer.astro';
-import ArticleCard from '../../components/article-card.astro';
-import { getArticleBySlug, sampleArticles } from '../../lib/articles';
-import { ArrowLeft, Clock, Calendar, User, Tag, Share2, Bookmark } from 'lucide-astro';
+import BaseLayout from "../../layouts/base-layout.astro";
+import Navbar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
+import ArticleCard from "../../components/article-card.astro";
+import { getArticleBySlug, sampleArticles } from "../../lib/articles";
+import { ArrowLeft, Clock, Calendar, User, Tag, Share2, Bookmark } from "lucide-astro";
+import { marked } from "marked";
 
 // -- get article slug from url params
 export function getStaticPaths() {
-  return sampleArticles.map(article => ({
+  return sampleArticles.map((article) => ({
     params: { slug: article.slug },
   }));
 }
@@ -18,27 +19,34 @@ const { slug } = Astro.params;
 const article = getArticleBySlug(slug as string);
 
 // -- redirect to 404 if article not found
-if (!article) {
-  return Astro.redirect('/404');
-}
+if (!article) return Astro.redirect("/404");
+
+// -- markdown -> html
+const normalizedContent = (article.content ?? "")
+  // si tu markdown viene todo en una línea con " ## " lo arreglamos
+  .replace(/\s##\s/g, "\n\n## ")
+  .replace(/\s###\s/g, "\n\n### ")
+  .replace(/\s####\s/g, "\n\n#### ");
+
+const contentHtml = marked.parse(normalizedContent);
 
 // -- get related articles (same category, excluding current)
 const relatedArticles = sampleArticles
-  .filter(a => a.category === article.category && a.slug !== article.slug)
+  .filter((a) => a.category === article.category && a.slug !== article.slug)
   .slice(0, 2);
 
 // -- format date
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
   });
 };
 ---
 
-<BaseLayout 
+<BaseLayout
   title={article.title}
   description={article.excerpt}
   keywords={article.tags}
@@ -46,7 +54,7 @@ const formatDate = (dateString: string) => {
   ogType="article"
 >
   <Navbar />
-  
+
   <main id="main-content" class="article-page">
     <article class="article-container">
       <!-- -- back navigation -->
@@ -56,18 +64,18 @@ const formatDate = (dateString: string) => {
           <span>Back to News</span>
         </a>
       </nav>
-      
+
       <!-- -- article header -->
       <header class="article-header">
         <div class="article-category">
           <Tag size={14} strokeWidth={2} />
           <span>{article.category}</span>
         </div>
-        
+
         <h1 class="article-title">{article.title}</h1>
-        
+
         <p class="article-excerpt">{article.excerpt}</p>
-        
+
         <div class="article-meta">
           <div class="meta-item">
             <User size={16} strokeWidth={2} />
@@ -82,78 +90,71 @@ const formatDate = (dateString: string) => {
             <span>{article.readingTime} min read</span>
           </div>
         </div>
-        
+
         <!-- -- article actions -->
         <div class="article-actions">
-          <button 
-            class="action-btn"
-            aria-label="Share article"
-          >
+          <button class="action-btn" aria-label="Share article">
             <Share2 size={18} strokeWidth={2} />
             <span>Share</span>
           </button>
-          <button 
-            class="action-btn"
-            aria-label="Bookmark article"
-          >
+          <button class="action-btn" aria-label="Bookmark article">
             <Bookmark size={18} strokeWidth={2} />
             <span>Save</span>
           </button>
         </div>
       </header>
-      
+
       <!-- -- featured image -->
       <figure class="article-image-wrapper">
-        <img 
-          src={article.imageUrl} 
-          alt={article.title}
-          class="article-image"
-          loading="eager"
-        />
+        <img src={article.imageUrl} alt={article.title} class="article-image" loading="eager" />
       </figure>
-      
+
       <!-- -- article content -->
-      <div class="article-content" set:html={article.content} />
-      
+      <div class="article-content" set:html={contentHtml} />
+
       <!-- -- article tags -->
       <div class="article-tags">
         <span class="tags-label">Tags:</span>
         <div class="tags-list">
-          {article.tags.map(tag => (
-            <a href={`/news?tag=${tag}`} class="tag-link">
-              {tag.replace(/-/g, ' ')}
-            </a>
-          ))}
+          {
+            article.tags.map((tag) => (
+              <a href={`/news?tag=${tag}`} class="tag-link">
+                {tag.replace(/-/g, " ")}
+              </a>
+            ))
+          }
         </div>
       </div>
     </article>
-    
+
     <!-- -- related articles -->
-    {relatedArticles.length > 0 && (
-      <section class="related-section">
-        <div class="container">
-          <h2 class="related-title">Related Articles</h2>
-          <div class="related-grid">
-            {relatedArticles.map(relatedArticle => (
-              <ArticleCard
-                slug={relatedArticle.slug}
-                title={relatedArticle.title}
-                excerpt={relatedArticle.excerpt}
-                category={relatedArticle.category}
-                publishedAt={relatedArticle.publishedAt}
-                readingTime={relatedArticle.readingTime}
-                imageUrl={relatedArticle.imageUrl}
-              />
-            ))}
+    {
+      relatedArticles.length > 0 && (
+        <section class="related-section">
+          <div class="container">
+            <h2 class="related-title">Related Articles</h2>
+            <div class="related-grid">
+              {relatedArticles.map((relatedArticle) => (
+                <ArticleCard
+                  slug={relatedArticle.slug}
+                  title={relatedArticle.title}
+                  excerpt={relatedArticle.excerpt}
+                  category={relatedArticle.category}
+                  publishedAt={relatedArticle.publishedAt}
+                  readingTime={relatedArticle.readingTime}
+                  imageUrl={relatedArticle.imageUrl}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    )}
+        </section>
+      )
+    }
   </main>
-  
+
   <!-- -- modal container -->
   <div id="modal-container" aria-live="polite"></div>
-  
+
   <Footer />
 </BaseLayout>
 
@@ -162,18 +163,18 @@ const formatDate = (dateString: string) => {
   .article-page {
     padding: var(--space-xl) 0 var(--space-3xl);
   }
-  
+
   .article-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 var(--space-lg);
   }
-  
+
   /* -- back navigation */
   .back-nav {
     margin-bottom: var(--space-xl);
   }
-  
+
   .back-link {
     display: inline-flex;
     align-items: center;
@@ -184,17 +185,17 @@ const formatDate = (dateString: string) => {
     font-weight: 500;
     transition: color var(--transition-fast);
   }
-  
+
   .back-link:hover {
     color: var(--color-accent-primary);
   }
-  
+
   /* -- article header */
   .article-header {
     margin-bottom: var(--space-xl);
     text-align: center;
   }
-  
+
   .article-category {
     display: inline-flex;
     align-items: center;
@@ -208,7 +209,7 @@ const formatDate = (dateString: string) => {
     font-weight: 600;
     text-transform: capitalize;
   }
-  
+
   .article-title {
     font-family: var(--font-display);
     font-size: var(--text-4xl);
@@ -218,7 +219,7 @@ const formatDate = (dateString: string) => {
     margin-bottom: var(--space-lg);
     animation: fade-in 0.6s ease forwards;
   }
-  
+
   .article-excerpt {
     font-size: var(--text-xl);
     color: var(--color-text-secondary);
@@ -227,7 +228,7 @@ const formatDate = (dateString: string) => {
     animation: fade-in 0.6s ease 0.1s forwards;
     opacity: 0;
   }
-  
+
   .article-meta {
     display: flex;
     justify-content: center;
@@ -237,7 +238,7 @@ const formatDate = (dateString: string) => {
     animation: fade-in 0.6s ease 0.2s forwards;
     opacity: 0;
   }
-  
+
   .meta-item {
     display: flex;
     align-items: center;
@@ -245,7 +246,7 @@ const formatDate = (dateString: string) => {
     color: var(--color-text-muted);
     font-size: var(--text-sm);
   }
-  
+
   /* -- article actions */
   .article-actions {
     display: flex;
@@ -254,7 +255,7 @@ const formatDate = (dateString: string) => {
     animation: fade-in 0.6s ease 0.3s forwards;
     opacity: 0;
   }
-  
+
   .action-btn {
     display: flex;
     align-items: center;
@@ -270,13 +271,13 @@ const formatDate = (dateString: string) => {
     cursor: pointer;
     transition: all var(--transition-fast);
   }
-  
+
   .action-btn:hover {
     border-color: var(--color-accent-primary);
     color: var(--color-accent-primary);
     background-color: rgba(221, 12, 240, 0.05);
   }
-  
+
   /* -- article image */
   .article-image-wrapper {
     margin: 0 calc(-1 * var(--space-lg)) var(--space-xl);
@@ -284,32 +285,32 @@ const formatDate = (dateString: string) => {
     overflow: hidden;
     box-shadow: var(--shadow-lg);
   }
-  
+
   @media (min-width: 900px) {
     .article-image-wrapper {
       margin-left: -100px;
       margin-right: -100px;
     }
   }
-  
+
   .article-image {
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
   }
-  
+
   /* -- article content */
   .article-content {
     font-size: var(--text-lg);
     line-height: 1.8;
     color: var(--color-text-secondary);
   }
-  
+
   .article-content :global(p) {
     margin-bottom: var(--space-lg);
   }
-  
+
   .article-content :global(h2) {
     font-family: var(--font-display);
     font-size: var(--text-2xl);
@@ -317,7 +318,7 @@ const formatDate = (dateString: string) => {
     color: var(--color-text-primary);
     margin: var(--space-2xl) 0 var(--space-md);
   }
-  
+
   .article-content :global(h3) {
     font-family: var(--font-display);
     font-size: var(--text-xl);
@@ -325,13 +326,13 @@ const formatDate = (dateString: string) => {
     color: var(--color-text-primary);
     margin: var(--space-xl) 0 var(--space-md);
   }
-  
+
   .article-content :global(a) {
     color: var(--color-accent-primary);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  
+
   .article-content :global(blockquote) {
     margin: var(--space-xl) 0;
     padding: var(--space-lg);
@@ -342,7 +343,7 @@ const formatDate = (dateString: string) => {
     font-style: italic;
     color: var(--color-text-primary);
   }
-  
+
   .article-content :global(code) {
     padding: var(--space-xs) var(--space-sm);
     background-color: var(--color-bg-tertiary);
@@ -350,7 +351,7 @@ const formatDate = (dateString: string) => {
     font-family: var(--font-mono);
     font-size: 0.9em;
   }
-  
+
   /* -- article tags */
   .article-tags {
     display: flex;
@@ -361,19 +362,19 @@ const formatDate = (dateString: string) => {
     padding-top: var(--space-xl);
     border-top: 1px solid var(--color-border);
   }
-  
+
   .tags-label {
     color: var(--color-text-muted);
     font-size: var(--text-sm);
     font-weight: 500;
   }
-  
+
   .tags-list {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
   }
-  
+
   .tag-link {
     padding: var(--space-xs) var(--space-sm);
     background-color: var(--color-bg-secondary);
@@ -384,20 +385,20 @@ const formatDate = (dateString: string) => {
     text-transform: capitalize;
     transition: all var(--transition-fast);
   }
-  
+
   .tag-link:hover {
     border-color: var(--color-accent-primary);
     color: var(--color-accent-primary);
     background-color: rgba(221, 12, 240, 0.05);
   }
-  
+
   /* -- related section */
   .related-section {
     margin-top: var(--space-3xl);
     padding: var(--space-2xl) 0;
     background-color: var(--color-bg-secondary);
   }
-  
+
   .related-title {
     font-family: var(--font-display);
     font-size: var(--text-2xl);
@@ -406,7 +407,7 @@ const formatDate = (dateString: string) => {
     margin-bottom: var(--space-xl);
     text-align: center;
   }
-  
+
   .related-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -414,16 +415,16 @@ const formatDate = (dateString: string) => {
     max-width: 1000px;
     margin: 0 auto;
   }
-  
+
   @media (max-width: 768px) {
     .article-title {
       font-size: var(--text-3xl);
     }
-    
+
     .article-excerpt {
       font-size: var(--text-lg);
     }
-    
+
     .related-grid {
       grid-template-columns: 1fr;
     }

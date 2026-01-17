@@ -10,28 +10,28 @@
   --color-bg-card: #ffffff;
   --color-bg-hover: #e2e8f0;
   --color-bg-dark: #1e293b;
-  
+
   /* -- accent colors - starship inspired gradient */
   --color-accent-primary: #dd0cf0;
   --color-accent-secondary: #7c3aed;
   --color-accent-tertiary: #22d3ee;
   --color-accent-gradient: linear-gradient(135deg, #dd0cf0 0%, #7c3aed 50%, #22d3ee 100%);
-  
+
   /* -- text colors */
   --color-text-primary: #0f172a;
   --color-text-secondary: #475569;
   --color-text-muted: #94a3b8;
   --color-text-light: #ffffff;
-  
+
   /* -- border and dividers */
   --color-border: #e2e8f0;
   --color-border-hover: #cbd5e1;
-  
+
   /* -- typography - inter for titles/buttons, poppins for body text */
-  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
   /* -- font sizes - reduced */
   --text-xs: 0.7rem;
   --text-sm: 0.8rem;
@@ -43,7 +43,7 @@
   --text-4xl: 1.875rem;
   --text-5xl: 2.25rem;
   --text-6xl: 3rem;
-  
+
   /* -- spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -52,7 +52,7 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
   --space-3xl: 4rem;
-  
+
   /* -- border radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
@@ -60,19 +60,19 @@
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
   --radius-full: 9999px;
-  
+
   /* -- shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  
+
   /* -- transitions */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 350ms ease;
-  
+
   /* -- z-index layers */
   --z-base: 1;
   --z-dropdown: 100;
@@ -107,19 +107,36 @@ body {
 }
 
 /* -- typography base */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.2;
   color: var(--color-text-primary);
 }
 
-h1 { font-size: var(--text-5xl); }
-h2 { font-size: var(--text-4xl); }
-h3 { font-size: var(--text-3xl); }
-h4 { font-size: var(--text-2xl); }
-h5 { font-size: var(--text-xl); }
-h6 { font-size: var(--text-lg); }
+h1 {
+  font-size: var(--text-5xl);
+}
+h2 {
+  font-size: var(--text-4xl);
+}
+h3 {
+  font-size: var(--text-3xl);
+}
+h4 {
+  font-size: var(--text-2xl);
+}
+h5 {
+  font-size: var(--text-xl);
+}
+h6 {
+  font-size: var(--text-lg);
+}
 
 p {
   color: var(--color-text-secondary);
@@ -245,7 +262,7 @@ a:hover {
   .grid-cols-4 {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .grid-cols-3 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -257,13 +274,13 @@ a:hover {
     --text-4xl: 1.5rem;
     --text-3xl: 1.25rem;
   }
-  
+
   .grid-cols-2,
   .grid-cols-3,
   .grid-cols-4 {
     grid-template-columns: 1fr;
   }
-  
+
   .container {
     padding: 0 var(--space-md);
   }
@@ -293,7 +310,8 @@ a:hover {
 }
 
 @keyframes gradient-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -302,7 +320,8 @@ a:hover {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -325,7 +344,7 @@ a:hover {
 }
 
 .htmx-request::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -390,4 +409,27 @@ a:hover {
 
 .skip-link:focus {
   top: var(--space-md);
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+.prose h3 {
+  font-size: 1.25rem;
+  margin-top: 1.25rem;
+}
+.prose p {
+  line-height: 1.75;
+  margin: 0.75rem 0;
+}
+.prose strong {
+  font-weight: 700;
+}
+.prose ul {
+  padding-left: 1.25rem;
+  margin: 0.75rem 0;
+}
+.prose li {
+  margin: 0.25rem 0;
 }
