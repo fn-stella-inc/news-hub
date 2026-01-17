@@ -39,6 +39,8 @@ const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2161761975943971"
       crossorigin="anonymous"></script>
+    <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
+    ></script>
 
     <!-- -- meta charset and viewport -->
     <meta charset="UTF-8" />
@@ -125,6 +127,18 @@ const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}
     />
   </head>
   <body>
+    <!-- test -->
+    <amp-ad
+      width="100vw"
+      height="320"
+      type="adsense"
+      data-ad-client="ca-pub-2161761975943971"
+      data-ad-slot="9580961564"
+      data-auto-format="rspv"
+      data-full-width=""
+    >
+      <div></div>
+    </amp-ad>
     <!-- -- skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
