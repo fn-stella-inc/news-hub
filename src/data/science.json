@@ -7,241 +7,241 @@
       "slug": "james-webb-exoplanet-discovery",
       "title": "James Webb Telescope Discovers New Exoplanet With Earth-Like Atmosphere",
       "excerpt": "NASA's telescope identifies a potentially habitable world with signs of water vapor in its atmosphere.",
-      "content": "The James Webb Space Telescope has made its most exciting discovery yet: an exoplanet with atmospheric conditions remarkably similar to Earth.\n\n## The Discovery\n\nThe planet, designated JWST-2025b, orbits a sun-like star 120 light-years away. Spectroscopic analysis reveals water vapor, carbon dioxide, and potentially methane in its atmosphere.\n\n## Habitability Potential\n\nThe planet sits squarely in its star's habitable zone, where liquid water could exist on the surface. Its size and density suggest a rocky composition similar to Earth.\n\n## What This Means\n\nWhile we cannot confirm life exists there, this discovery demonstrates that Earth-like atmospheric conditions may be more common than previously thought.\n\n## Next Steps\n\nFuture observations will attempt to detect biosignatures—chemical signs that could indicate biological processes on the planet.",
+      "content": "The James Webb Space Telescope (JWST) has made its most significant exoplanetary discovery to date: a terrestrial world with an atmospheric composition remarkably similar to Earth's, pushing the boundaries of our search for life.\n\n## Transmission Spectroscopy Analysis\n\nThe planet, designated JWST-2025b, orbits a K-dwarf star 120 light-years away. Using the Near-Infrared Spectrograph (NIRSpec), scientists analyzed the starlight filtering through the planet's atmosphere.  The resulting spectrum revealed clear absorption lines for water vapor (H2O), carbon dioxide (CO2), and, crucially, tentative traces of dimethyl sulfide (DMS), a molecule only produced by life on Earth.\n\n## The Goldilocks Zone\n\nThe planet sits squarely in its star's 'Goldilocks' or habitable zone, where temperatures allow for liquid water to exist on the surface. Unlike previous discoveries of gas giants in this zone, JWST-2025b's mass and density indicate a rocky silicate composition similar to our own planet.\n\n## Implications for Astrobiology\n\nWhile the presence of these gases is not definitive proof of life, it establishes JWST-2025b as a 'Hycean' world candidate—a planet with a liquid ocean and a hydrogen-rich atmosphere. This discovery validates the capability of JWST to characterize the atmospheres of Earth-sized planets, a feat previously impossible.\n\n## Future Observations\n\nAstronomers have secured additional observation time to confirm the methane and DMS signals. Confirming these 'biosignatures' would be the strongest evidence yet for extraterrestrial biological activity.",
       "category": "science",
       "publishedAt": "2025-01-15T12:00:00Z",
       "readingTime": 7,
       "imageUrl": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["space", "exoplanets", "james-webb", "astronomy"]
+      "tags": ["space", "exoplanets", "james-webb", "astronomy", "astrobiology"]
     },
     {
       "slug": "crispr-genetic-disease-breakthrough",
       "title": "CRISPR Gene Therapy Cures Inherited Blood Disorder in Clinical Trial",
       "excerpt": "Gene editing technology successfully eliminates sickle cell disease in trial participants.",
-      "content": "A landmark clinical trial has demonstrated that CRISPR gene editing can cure sickle cell disease, offering hope to millions worldwide.\n\n## The Treatment\n\nScientists used CRISPR to edit patients' own stem cells, correcting the genetic mutation that causes sickle cell disease. The modified cells were then reinfused into patients.\n\n## Results\n\nAll 45 trial participants have been effectively cured, with no serious adverse effects after three years of follow-up. Patients no longer experience the painful crises characteristic of the disease.\n\n## Broader Implications\n\nThis success proves that CRISPR can safely cure genetic diseases in humans, opening the door to treatments for thousands of other genetic conditions.\n\n## Access Challenges\n\nThe treatment currently costs over $2 million per patient. Researchers and policymakers are working to make it accessible to those who need it most.",
+      "content": "A landmark clinical trial has demonstrated that CRISPR-Cas9 gene editing can effectively cure sickle cell disease, marking the transition of gene editing from theoretical science to practical medicine.\n\n## The Mechanism: Molecular Scissors\n\nScientists used CRISPR to perform an ex-vivo edit of the patients' hematopoietic stem cells. The Cas9 enzyme was guided to a specific DNA sequence to disable the BCL11A gene, which acts as a 'brake' on the production of fetal hemoglobin. By disabling this brake, the cells resumed producing healthy fetal hemoglobin, compensating for the defective adult hemoglobin that causes sickling.\n\n## Clinical Outcomes\n\nThe results have been transformative. All 45 trial participants, who previously suffered from debilitating pain crises and required frequent blood transfusions, have been effectively cured. Three years post-treatment, their edited stem cells continue to produce healthy red blood cells.\n\n## Safety and Off-Target Effects\n\nExtensive sequencing has shown no dangerous 'off-target' edits (accidental cuts in the wrong part of the genome), alleviating a major safety concern surrounding CRISPR therapies.\n\n## The Access Challenge\n\nWhile scientifically revolutionary, the therapy is logistically complex, requiring chemotherapy to clear the bone marrow before reinfusion, and costs over $2 million per patient. The focus is now on developing in-vivo delivery methods that could act as a simple injection.",
       "category": "science",
       "publishedAt": "2025-01-14T15:00:00Z",
-      "readingTime": 6,
+      "readingTime": 8,
       "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["crispr", "gene-therapy", "medicine", "genetics"]
+      "tags": ["crispr", "gene-therapy", "medicine", "genetics", "biotech"]
     },
     {
       "slug": "ocean-carbon-capture-discovery",
       "title": "Scientists Discover Ocean Microbes That Could Accelerate Carbon Capture",
       "excerpt": "Newly identified bacteria show unprecedented ability to absorb atmospheric carbon dioxide.",
-      "content": "Marine biologists have discovered a new type of bacteria that captures carbon dioxide far more efficiently than any known organism.\n\n## The Discovery\n\nThe bacteria, found in deep ocean vents, use a novel metabolic pathway to convert CO2 into stable carbon compounds 100 times faster than typical photosynthesis.\n\n## Climate Implications\n\nIf cultivated at scale, these organisms could significantly enhance natural carbon capture, providing a biological tool to combat climate change.\n\n## Research Progress\n\nScientists are working to understand the genetic basis of this ability, potentially allowing the trait to be transferred to other organisms.\n\n## Cautious Optimism\n\nWhile promising, researchers emphasize that this is not a silver bullet for climate change and must be part of broader emissions reduction efforts.",
+      "content": "Marine biologists exploring deep-sea hydrothermal vents have isolated a new strain of cyanobacteria that exhibits a carbon fixation rate significantly higher than any known terrestrial plant or algae.\n\n## A New Metabolic Pathway\n\nUnlike typical photosynthesis which relies on the Calvin cycle, these microbes utilize a highly efficient variant of the reductive tricarboxylic acid (rTCA) cycle. This pathway allows them to convert dissolved inorganic carbon into biomass with remarkably low energy input, thriving in low-light conditions.\n\n## Synthetic Biology Applications\n\nThe discovery offers a blueprint for 'biological carbon capture.' Researchers are attempting to map the genes responsible for this efficiency and splice them into fast-growing algae strains or even crop plants to supercharge their ability to scrub CO2 from the atmosphere.\n\n## Ecological Impact\n\nIf these microbes can be cultivated at scale in bioreactors, they could produce carbon-negative biofuels or bioplastics. However, releasing them directly into the open ocean poses ecological risks that scientists are carefully evaluating.\n\n## A Tool, Not a Cure\n\nWhile promising, researchers warn that biological capture operates on decadal timescales. It is a powerful tool for 'negative emissions' strategies but cannot replace the urgent need to stop burning fossil fuels.",
       "category": "science",
       "publishedAt": "2025-01-14T09:00:00Z",
-      "readingTime": 5,
+      "readingTime": 6,
       "imageUrl": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["climate", "ocean", "carbon-capture", "biology"]
+      "tags": ["climate", "ocean", "carbon-capture", "biology", "microbiology"]
     },
     {
       "slug": "brain-computer-interface-advances",
       "title": "Brain-Computer Interface Allows Paralyzed Patient to Control Computer Naturally",
       "excerpt": "New neural implant technology enables thought-controlled computing with unprecedented accuracy.",
-      "content": "A patient with complete paralysis can now browse the internet, send emails, and play games using only their thoughts.\n\n## The Technology\n\nTiny electrodes implanted in the motor cortex detect neural signals associated with intended movements, translating them into computer commands.\n\n## Breakthrough Accuracy\n\nThe system achieves 95% accuracy in real-world use, a dramatic improvement over previous interfaces that required extensive training and produced inconsistent results.\n\n## Quality of Life Impact\n\nFor patients with severe paralysis, this technology restores independence and communication abilities that seemed permanently lost.\n\n## Future Development\n\nResearchers are working on bidirectional interfaces that could also provide sensory feedback, creating a more natural human-computer interaction.",
+      "content": "A new generation of Brain-Computer Interfaces (BCI) has restored digital autonomy to a patient with ALS (amyotrophic lateral sclerosis), allowing them to operate a computer at speeds approaching natural typing.\n\n## High-Bandwidth Neural Decoding\n\nThe system utilizes two micro-electrode arrays implanted directly into the motor cortex—the area of the brain responsible for hand movement.  Machine learning algorithms decode the neural 'spikes' associated with the *intent* to move a finger, translating these complex firing patterns into cursor movements and clicks in real-time.\n\n## Breakthrough Accuracy and Speed\n\nPrevious BCIs required laborious mental effort. This new system achieves 95% accuracy and a typing speed of 62 characters per minute, a record for direct brain-to-text communication. The system essentially reads the patient's 'handwriting' from their brain activity.\n\n## Wireless and Fully Implantable\n\nUnlike older models requiring wires protruding from the skull, this device transmits data wirelessly to an external receiver, significantly reducing infection risk and allowing for home use.\n\n## Future: Bidirectional Feedback\n\nResearch is now shifting to bidirectional interfaces that not only read motor commands but also write sensory data back to the brain, potentially allowing patients to 'feel' what they are touching with a robotic limb.",
       "category": "science",
       "publishedAt": "2025-01-13T14:00:00Z",
-      "readingTime": 6,
+      "readingTime": 7,
       "imageUrl": "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["neuroscience", "brain-computer-interface", "medicine", "technology"]
+      "tags": ["neuroscience", "bci", "medicine", "technology", "ai"]
     },
     {
       "slug": "nuclear-fusion-milestone",
       "title": "Nuclear Fusion Experiment Produces Net Energy for Extended Period",
       "excerpt": "Scientists achieve sustained fusion reaction that generates more power than it consumes.",
-      "content": "A major fusion research facility has achieved what many considered impossible: sustained net energy production from nuclear fusion.\n\n## The Achievement\n\nFor 30 seconds, the reactor produced 20% more energy than was used to initiate and maintain the fusion reaction—a historic first.\n\n## Why It Matters\n\nFusion promises virtually unlimited clean energy with minimal radioactive waste. This milestone proves the concept is scientifically viable.\n\n## Technical Challenges Remain\n\nScaling up to commercial power plants will require maintaining fusion for much longer periods and developing materials that can withstand the extreme conditions.\n\n## Timeline to Commercialization\n\nExperts now believe commercial fusion power could be achievable within 15-20 years, significantly sooner than previous estimates.",
+      "content": "The National Ignition Facility (NIF) has achieved the 'Holy Grail' of energy physics: a sustained nuclear fusion reaction that produced more energy than was injected to start it (Q > 1) for a clinically significant duration.\n\n## Deuterium-Tritium Fusion\n\nThe experiment fused isotopes of hydrogen—Deuterium and Tritium—under extreme heat and pressure to form Helium and a high-energy neutron.  The resulting mass difference is converted into energy according to Einstein's E=mc² equation. Unlike fission, this process generates no long-lived radioactive waste.\n\n## Overcoming the Plasma Instability\n\nMaintaining the superheated plasma (100 million degrees Celsius) has historically been impossible due to magnetic instabilities. This breakthrough used AI-controlled magnetic confinement systems to adjust the field thousands of times per second, stabilizing the plasma long enough for ignition to occur.\n\n## The Path to Commercialization\n\nWhile the reaction lasted only 30 seconds, it proves the physics works. The challenge now shifts from science to engineering: developing materials that can withstand the neutron bombardment for years and harvesting the heat efficiently to drive turbines.\n\n## Clean Energy Timeline\n\nWith this milestone, the roadmap to a pilot fusion power plant has accelerated. Experts now believe a grid-connected demonstration reactor could be operational by the late 2030s.",
       "category": "science",
       "publishedAt": "2025-01-13T10:00:00Z",
-      "readingTime": 6,
+      "readingTime": 7,
       "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["fusion", "energy", "physics", "clean-energy"]
+      "tags": ["fusion", "energy", "physics", "clean-energy", "nuclear"]
     },
     {
       "slug": "alzheimers-early-detection-blood-test",
       "title": "New Blood Test Can Detect Alzheimer's Disease 20 Years Before Symptoms",
       "excerpt": "Revolutionary diagnostic tool identifies brain changes decades before cognitive decline begins.",
-      "content": "A simple blood test can now detect the earliest signs of Alzheimer's disease long before memory problems appear.\n\n## How It Works\n\nThe test measures specific proteins and biomarkers that increase when Alzheimer's-related brain changes begin, typically decades before symptoms.\n\n## Clinical Validation\n\nIn trials involving 10,000 participants, the test predicted Alzheimer's development with 94% accuracy up to 20 years in advance.\n\n## Treatment Implications\n\nEarly detection enables intervention when treatments are most effective, potentially preventing or delaying the onset of symptoms.\n\n## Screening Potential\n\nThe test could become a routine screening tool for people over 50, fundamentally changing how we approach neurodegenerative disease.",
+      "content": "A breakthrough in diagnostics has yielded a simple blood test capable of detecting the pathology of Alzheimer's disease up to two decades before the onset of memory loss.\n\n## Biomarker Analysis: p-Tau217\n\nThe test works by detecting minute levels of 'phosphorylated tau 217' (p-Tau217) in the plasma. This protein is a specific marker of the neurofibrillary tangles that accumulate in the brains of Alzheimer's patients.  Previously, detecting these markers required expensive PET scans or painful spinal taps.\n\n## Clinical Validation\n\nIn a multi-center trial involving 10,000 participants, the blood test matched the accuracy of cerebrospinal fluid analysis (94%) in predicting who would develop cognitive decline. It successfully differentiated Alzheimer's from other forms of dementia.\n\n## A New Era for Trials\n\nThis test resolves a major bottleneck in drug development: finding patients early enough. Most Alzheimer's drugs fail because they are administered too late, after brain damage is irreversible. This screening tool allows for 'preventative' clinical trials.\n\n## Public Health Screening\n\nHealth authorities are reviewing the test for general population screening for those over 50, potentially transforming Alzheimer's from a terminal diagnosis into a manageable chronic condition.",
       "category": "science",
       "publishedAt": "2025-01-12T16:00:00Z",
-      "readingTime": 5,
+      "readingTime": 6,
       "imageUrl": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["alzheimers", "medicine", "diagnostics", "neuroscience"]
+      "tags": ["alzheimers", "medicine", "diagnostics", "neuroscience", "biomarkers"]
     },
     {
       "slug": "artificial-photosynthesis-breakthrough",
       "title": "Scientists Create Artificial Leaf That Produces Clean Fuel From Sunlight",
       "excerpt": "New device mimics photosynthesis to generate hydrogen fuel with unprecedented efficiency.",
-      "content": "Researchers have developed an artificial photosynthesis system that converts sunlight and water into clean hydrogen fuel.\n\n## The Innovation\n\nThe device uses specialized catalysts to split water molecules, storing solar energy as hydrogen that can power vehicles and industrial processes.\n\n## Efficiency Gains\n\nThe new system converts 12% of solar energy into hydrogen fuel—double the efficiency of previous artificial photosynthesis attempts and approaching natural photosynthesis levels.\n\n## Scalability\n\nThe device uses abundant, inexpensive materials, making large-scale deployment economically feasible.\n\n## Clean Energy Impact\n\nThis technology could provide a sustainable way to produce hydrogen fuel without fossil fuels, supporting the transition to clean energy.",
+      "content": "Researchers at Caltech have unveiled a scalable 'artificial leaf' device that mimics the natural process of photosynthesis to convert sunlight, water, and carbon dioxide directly into liquid fuel.\n\n## Photoelectrochemical Water Splitting\n\nThe device uses a semiconductor to absorb sunlight and generate an electric charge, which powers a catalyst to split water molecules into oxygen and hydrogen protons.  Unlike solar panels which produce electricity, this device produces chemical fuel (hydrogen) that can be stored and transported.\n\n## Breaking the Efficiency Barrier\n\nNatural photosynthesis is inefficient (around 1%). This new system achieves a solar-to-fuel efficiency of 12%, making it commercially viable for the first time. The key innovation is a protective coating that prevents the semiconductor from corroding in water.\n\n## Closed-Loop Carbon Cycle\n\nWhen coupled with CO2 capture, the system can produce 'syngas'—a precursor to liquid gasoline. Burning this fuel releases only the CO2 that was originally captured to make it, resulting in a net-zero carbon footprint.\n\n## Scalability and Cost\n\nThe device is made from abundant, low-cost materials like silicon and nickel, avoiding the need for rare earth metals. Pilot plants are being planned to test industrial-scale hydrogen production.",
       "category": "science",
       "publishedAt": "2025-01-12T11:00:00Z",
-      "readingTime": 5,
+      "readingTime": 6,
       "imageUrl": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["photosynthesis", "hydrogen", "clean-energy", "chemistry"]
+      "tags": ["photosynthesis", "hydrogen", "clean-energy", "chemistry", "materials-science"]
     },
     {
       "slug": "deep-sea-ecosystem-discovery",
       "title": "Massive Ecosystem Discovered Beneath Ocean Floor",
       "excerpt": "Scientists find thriving community of organisms living in rocks deep below the seafloor.",
-      "content": "Researchers have discovered an extensive ecosystem existing in the rocks beneath the ocean floor, challenging our understanding of where life can exist.\n\n## The Discovery\n\nDrilling beneath the seafloor revealed microbial communities living in rock formations up to 2 kilometers below the ocean bottom.\n\n## Life in Extreme Conditions\n\nThese organisms survive without sunlight, using chemical energy from rocks to sustain themselves in conditions previously thought too harsh for life.\n\n## Scale of the Ecosystem\n\nScientists estimate this subsurface biosphere could contain more biomass than all the forests on Earth's surface.\n\n## Implications for Extraterrestrial Life\n\nIf life can thrive in such extreme conditions on Earth, similar environments on other planets or moons could also harbor life.",
+      "content": "An ocean drilling expedition has confirmed the existence of a vast, active biosphere thriving within the basaltic crust kilometers beneath the ocean floor, fundamentally changing our estimate of the total biomass on Earth.\n\n## Chemosynthesis in the Dark\n\nIsolated from the sun for millions of years, these microbial communities survive through chemosynthesis. They metabolize inorganic compounds like methane, sulfur, and iron found in the rock matrix.  This 'deep biosphere' operates on a geologic timescale, with some microbes having lifespans of thousands of years.\n\n## Biomass Implications\n\nScientists now estimate that this subsurface ecosystem contains up to 15% of Earth's total biomass—more than all marine life in the ocean above combined. It suggests the planet is 'alive' to a much greater depth than previously thought.\n\n## Astrobiology Connection\n\nThis discovery is a massive boost for the search for life on Mars and icy moons like Europa. If life can thrive in the high-pressure, dark, nutrient-poor rocks of Earth, the subsurface of Mars is a viable habitat for extant life.\n\n## Carbon Cycling\n\nThese deep microbes play a crucial, previously unmeasured role in the global carbon cycle, sequestering vast amounts of carbon that would otherwise escape into the ocean.",
       "category": "science",
       "publishedAt": "2025-01-11T14:00:00Z",
       "readingTime": 6,
       "imageUrl": "https://images.unsplash.com/photo-1551244072-5d12893278ab?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["ocean", "biology", "ecosystem", "discovery"]
+      "tags": ["ocean", "biology", "ecosystem", "discovery", "geology"]
     },
     {
       "slug": "plastic-eating-enzyme-discovery",
       "title": "Engineered Enzyme Breaks Down Plastic in Hours Instead of Centuries",
       "excerpt": "Scientists create super-enzyme that could revolutionize plastic recycling and waste management.",
-      "content": "A newly engineered enzyme can break down common plastics in just hours, offering a potential solution to plastic pollution.\n\n## The Engineering\n\nStarting with naturally occurring plastic-eating enzymes, scientists used AI to design a variant that works 1,000 times faster.\n\n## How It Works\n\nThe enzyme breaks plastic polymers back into their chemical building blocks, which can then be used to make new plastic with virgin quality.\n\n## Environmental Impact\n\nThis technology could divert millions of tons of plastic from landfills and oceans, creating a truly circular plastic economy.\n\n## Commercial Development\n\nSeveral companies are scaling up the technology for industrial use, with commercial recycling plants expected within three years.",
+      "content": "A newly engineered enzyme variant, derived from bacteria found in a Japanese recycling center, can depolymerize polyethylene terephthalate (PET)—the most common plastic—in a matter of hours.\n\n## Directed Evolution and AI\n\nUsing AI-guided protein design, scientists introduced mutations to the natural 'PETase' enzyme to improve its heat tolerance and speed. The result is a 'super-enzyme' that acts like molecular scissors, snipping the long plastic polymer chains back into their original monomers (ethylene glycol and terephthalic acid).\n\n## True Circularity\n\nCurrent recycling (mechanical) degrades plastic quality, turning bottles into carpets. Enzymatic recycling restores the material to virgin quality, meaning a plastic bottle can be recycled into a new plastic bottle infinitely, closing the loop.\n\n## Environmental Impact\n\nThis technology targets the millions of tons of plastic waste that are currently unrecyclable due to contamination. The enzyme can selectively eat plastic mixed with food waste or other materials, simplifying the sorting process.\n\n## Commercial Deployment\n\nBiotech startups are currently building the first industrial-scale bioreactors. By 2027, enzymatic recycling facilities aim to process 100,000 tons of plastic waste annually.",
       "category": "science",
       "publishedAt": "2025-01-11T09:00:00Z",
       "readingTime": 5,
       "imageUrl": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["plastic", "recycling", "enzymes", "environment"]
+      "tags": ["plastic", "recycling", "enzymes", "environment", "biotech"]
     },
     {
       "slug": "mars-water-ice-mapping",
       "title": "Complete Map of Mars Water Ice Reveals Accessible Resources for Future Missions",
       "excerpt": "New satellite data shows vast ice deposits within reach of potential human settlements.",
-      "content": "Scientists have created the most detailed map ever of water ice on Mars, revealing accessible resources crucial for human exploration.\n\n## The Findings\n\nThe map shows extensive ice deposits just beneath the surface at many locations, some containing enough water to fill Lake Superior.\n\n## Accessibility\n\nSeveral ice-rich sites are in regions suitable for landing and habitation, making them prime candidates for future human missions.\n\n## Why Water Matters\n\nWater ice can provide drinking water, oxygen for breathing, and hydrogen for rocket fuel—making sustained human presence possible.\n\n## Mission Planning\n\nSpace agencies are using this data to plan landing sites for upcoming crewed missions to Mars.",
+      "content": "Using the 'SHARAD' ground-penetrating radar on the Mars Reconnaissance Orbiter, scientists have compiled the definitive map of subsurface water ice on the Red Planet, identifying 'buried glaciers' in the mid-latitudes.\n\n## Accessible Ice Deposits\n\nThe map reveals that vast quantities of water ice—enough to fill Lake Superior—are located just centimeters below the dust in regions like Arcadia Planitia.  This is crucial because these mid-latitude regions receive enough sunlight for solar power, unlike the ice-rich poles.\n\n## In-Situ Resource Utilization (ISRU)\n\nThis ice is the key to human survival. It provides drinking water and oxygen, but more importantly, it is the feedstock for creating Methane rocket fuel (via the Sabatier reaction) for the return trip to Earth. This reduces the mission mass launch requirement by 90%.\n\n## Geologic History\n\nThe purity of the ice suggests it was deposited as snow during previous orbital cycles when Mars had a higher axial tilt, preserving a climate record of the planet spanning millions of years.\n\n## Landing Site Selection\n\nSpace agencies and private companies are now using this map to select the exact coordinates for the first human landing sites, prioritizing access to these 'ice mines'.",
       "category": "science",
       "publishedAt": "2025-01-10T15:00:00Z",
-      "readingTime": 5,
+      "readingTime": 6,
       "imageUrl": "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["mars", "space", "water", "exploration"]
+      "tags": ["mars", "space", "water", "exploration", "planetary-science"]
     },
     {
       "slug": "universal-flu-vaccine-trial",
       "title": "Universal Flu Vaccine Shows Promise in Human Trials",
       "excerpt": "New vaccine design could provide long-lasting protection against all influenza strains.",
-      "content": "A universal flu vaccine that protects against all strains has shown strong results in phase 2 clinical trials.\n\n## The Approach\n\nUnlike seasonal vaccines that target changing viral surfaces, this vaccine targets parts of the virus that remain constant across all strains.\n\n## Trial Results\n\nParticipants showed robust immune responses against multiple flu strains, with protection lasting at least three years in follow-up testing.\n\n## Public Health Impact\n\nA universal vaccine could eliminate annual flu shots and provide protection against pandemic flu strains before they emerge.\n\n## Timeline\n\nPhase 3 trials are underway, with potential approval within four years if results continue to be positive.",
+      "content": "The quest for a 'one-and-done' flu shot has taken a major leap forward with successful Phase 2 trials of a universal influenza vaccine based on mRNA technology.\n\n## Targeting the Conserved 'Stalk'\n\nTraditional flu shots target the 'head' of the hemagglutinin protein, which mutates rapidly (requiring annual updates). This new vaccine directs the immune system to attack the protein's 'stalk'—a structural foundation that rarely changes across different flu strains. \n\n## Broad Protection\n\nTrial participants showed robust antibody responses not just to the specific flu strain in the vaccine, but to distinct strains they had never been exposed to. This 'cross-protection' persisted for at least three years in follow-up studies.\n\n## Pandemic Prevention\n\nBeyond convenience, this vaccine is a biosecurity shield. It would provide immediate baseline protection against novel pandemic flu strains jumping from animals to humans (like H5N1), buying time for specific boosters.\n\n## Regulatory Path\n\nPhase 3 trials involving 30,000 people are launching globally. If successful, the universal vaccine could replace the seasonal shot by 2028, potentially eradicating seasonal flu epidemics.",
       "category": "science",
       "publishedAt": "2025-01-10T10:00:00Z",
-      "readingTime": 5,
+      "readingTime": 6,
       "imageUrl": "https://images.unsplash.com/photo-1584118624012-df056829fbd0?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["vaccine", "flu", "medicine", "public-health"]
+      "tags": ["vaccine", "flu", "medicine", "public-health", "immunology"]
     },
     {
       "slug": "quantum-entanglement-record",
       "title": "Scientists Achieve Quantum Entanglement Across Record Distance",
       "excerpt": "Particles remain connected over 1,200 kilometers, advancing quantum communication technology.",
-      "content": "Physicists have demonstrated quantum entanglement between particles separated by over 1,200 kilometers—a new world record.\n\n## The Experiment\n\nUsing satellite-based quantum communication, researchers created entangled photon pairs and sent them to receiving stations in different countries.\n\n## Significance\n\nQuantum entanglement enables unhackable communication and is essential for future quantum networks and computing.\n\n## Technical Achievement\n\nMaintaining entanglement over such distances required innovations in photon generation, transmission, and detection that push the boundaries of physics.\n\n## Practical Applications\n\nThis milestone brings global quantum internet closer to reality, which could revolutionize secure communications worldwide.",
+      "content": "Physicists using the 'Micius' satellite have successfully demonstrated quantum entanglement between two ground stations separated by 1,200 kilometers, shattering the previous record and laying the groundwork for a global quantum internet.\n\n## Spooky Action at a Distance\n\nThe satellite beamed pairs of entangled photons—particles of light that share a quantum state—to stations in China and Austria. Despite the distance, a measurement on one photon instantly determined the state of the other, confirming Einstein's 'spooky action' phenomenon on a planetary scale.\n\n## Unhackable Communication\n\nThis achievement enables Quantum Key Distribution (QKD). Any attempt to eavesdrop on the entangled particles collapses their quantum state, instantly revealing the intruder. This guarantees physically unbreakable encryption for banking and national security.\n\n## Technical Challenges\n\nMaintaining the delicate quantum state through the turbulent atmosphere was a massive engineering hurdle. The team developed advanced adaptive optics and filtering to detect single photons against the background of sunlight.\n\n## The Quantum Internet\n\nThis experiment proves that a constellation of quantum satellites could connect quantum computers globally, creating a distributed supercomputing network with processing power far exceeding any classical system.",
       "category": "science",
       "publishedAt": "2025-01-09T14:00:00Z",
-      "readingTime": 6,
+      "readingTime": 7,
       "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["quantum", "physics", "entanglement", "communication"]
+      "tags": ["quantum", "physics", "entanglement", "communication", "encryption"]
     },
     {
       "slug": "biodiversity-hotspot-discovery",
       "title": "New Biodiversity Hotspot Discovered in Southeast Asian Mountains",
       "excerpt": "Expedition uncovers hundreds of previously unknown species in remote mountain range.",
-      "content": "A scientific expedition to a remote mountain range has discovered an extraordinary diversity of previously unknown species.\n\n## The Discoveries\n\nResearchers identified over 300 new species including mammals, birds, reptiles, amphibians, and countless insects and plants.\n\n## Unique Ecosystem\n\nThe region's isolation created conditions for unique evolutionary developments, resulting in species found nowhere else on Earth.\n\n## Conservation Urgency\n\nThe discovery highlights the importance of protecting remaining wilderness areas before species are lost to habitat destruction.\n\n## Research Implications\n\nSome discovered species show potential for medical and agricultural applications, demonstrating the practical value of biodiversity conservation.",
+      "content": "A multi-disciplinary expedition to the remote 'Sky Islands' of the Mekong region has documented an ecological treasure trove, identifying over 300 species previously unknown to science.\n\n## Evolutionary Laboratories\n\nThe region consists of isolated mountain peaks separated by deep valleys. This geography creates 'islands' on land, where species evolve in isolation. The team discovered distinct species of amphibians and orchids on neighboring peaks that are genetically divergent despite being only miles apart.\n\n## Notable Finds\n\nDiscoveries include a 'iridescent snake' whose scales reflect rainbow colors, a new genus of tree frog with transparent skin, and several medicinal plants used by indigenous communities but unrecorded by botany.\n\n## Conservation Urgency\n\nThe region is currently threatened by illegal logging and mining. Scientists are using this data to lobby for the creation of a trans-national protected park, arguing that the genetic library contained in these forests is irreplaceable.\n\n## DNA Barcoding\n\nRapid portable DNA sequencing allowed the team to identify new species in the field, accelerating the taxonomic process from years to days.",
       "category": "science",
       "publishedAt": "2025-01-09T09:00:00Z",
       "readingTime": 5,
       "imageUrl": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["biodiversity", "conservation", "species", "discovery"]
+      "tags": ["biodiversity", "conservation", "species", "discovery", "ecology"]
     },
     {
       "slug": "battery-technology-solid-state",
       "title": "Solid-State Battery Achieves Energy Density Breakthrough",
       "excerpt": "New battery technology doubles energy storage while eliminating fire risk.",
-      "content": "Engineers have developed a solid-state battery that stores twice the energy of current lithium-ion batteries while being completely fire-safe.\n\n## The Innovation\n\nReplacing liquid electrolytes with solid materials eliminates the fire risk that plagues current batteries while dramatically increasing energy density.\n\n## Performance Metrics\n\nThe new batteries can charge in 10 minutes, last 5,000 charge cycles, and operate in extreme temperatures—far exceeding current technology.\n\n## Electric Vehicle Impact\n\nThese batteries could double the range of electric vehicles while reducing charging time to match gasoline refueling.\n\n## Manufacturing Challenges\n\nCompanies are investing billions to build manufacturing capacity for solid-state batteries, with mass production expected by 2027.",
+      "content": "A major breakthrough in materials science has overcome the stability issues of solid-state batteries, paving the way for electric vehicles (EVs) that can drive 800 miles on a single charge.\n\n## The Solid Electrolyte Advantage\n\nTraditional Lithium-ion batteries use a liquid electrolyte, which is flammable and limits voltage. This new design uses a ceramic solid electrolyte.  This allows for the use of a lithium-metal anode instead of graphite, doubling the energy density (Wh/kg).\n\n## Solving the Dendrite Problem\n\nPreviously, solid-state batteries failed because 'dendrites' (lithium spikes) would grow and short-circuit the cell. The researchers developed a multi-layer structure that self-heals these micro-cracks, enabling the battery to withstand 5,000 charge cycles—lasting the lifetime of a vehicle.\n\n## Fast Charging\n\nWithout the risk of overheating liquid, these batteries can accept charge at much higher rates. The prototype demonstrated a 0-80% charge in just 10 minutes, effectively solving 'range anxiety' for EV adoption.\n\n## Manufacturing at Scale\n\nMajor automakers have licensed the technology, with pilot production lines currently under construction. The first commercial vehicles equipped with these cells are expected to launch in 2027.",
       "category": "science",
       "publishedAt": "2025-01-08T15:00:00Z",
-      "readingTime": 5,
+      "readingTime": 6,
       "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["batteries", "energy", "electric-vehicles", "technology"]
+      "tags": ["batteries", "energy", "electric-vehicles", "technology", "materials-science"]
     },
     {
       "slug": "ancient-human-species-discovery",
       "title": "DNA Analysis Reveals Previously Unknown Human Species in Asia",
       "excerpt": "Genetic evidence points to a distinct human population that lived alongside early modern humans.",
-      "content": "Analysis of ancient DNA has revealed that a previously unknown human species lived in Southeast Asia until as recently as 30,000 years ago.\n\n## The Evidence\n\nGenetic material from ancient bones shows a distinct human lineage that separated from other humans over 500,000 years ago.\n\n## Coexistence with Modern Humans\n\nThese humans overlapped with early modern human populations, and evidence suggests they may have interbred, leaving traces in today's Southeast Asian populations.\n\n## Physical Characteristics\n\nFossil evidence suggests they were smaller in stature than modern humans but had larger brain cases relative to body size.\n\n## Rewriting Human History\n\nThis discovery adds another branch to the human family tree and suggests our evolutionary history is more complex than previously understood.",
+      "content": "Paleogeneticists analyzing DNA from a 50,000-year-old bone fragment found in a cave in Laos have identified a 'ghost lineage' of humans that is distinct from Neanderthals and Denisovans.\n\n## The Genetic Puzzle\n\nThe genome sequencing revealed that this group separated from the modern human lineage 500,000 years ago but did not go extinct until recently.  They co-existed and interbred with the ancestors of present-day Papuans and Indigenous Australians.\n\n## Physical Characteristics\n\nWhile only fragmentary fossils exist, DNA analysis of genes related to morphology suggests they had robust dentition and adaptations to tropical rainforest environments, unlike the cold-adapted Neanderthals.\n\n## A Crowded World\n\nThis discovery confirms that the Late Pleistocene was a time of rich human diversity, with at least five distinct human species (Sapiens, Neanderthals, Denisovans, Floresiensis, and this new group) sharing the planet simultaneously.\n\n## Rewriting Migration Maps\n\nThe find suggests that Southeast Asia was a major hub of human evolution and migration, prompting a re-excavation of several archaeological sites in the region.",
       "category": "science",
       "publishedAt": "2025-01-08T10:00:00Z",
       "readingTime": 6,
       "imageUrl": "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["anthropology", "evolution", "dna", "human-history"]
+      "tags": ["anthropology", "evolution", "dna", "human-history", "archaeology"]
     },
     {
       "slug": "climate-tipping-points-study",
       "title": "New Study Maps Climate Tipping Points With Unprecedented Precision",
       "excerpt": "Research identifies critical thresholds that could trigger irreversible climate changes.",
-      "content": "Scientists have created the most detailed analysis yet of climate tipping points—thresholds beyond which changes become irreversible.\n\n## Key Findings\n\nThe study identifies nine major tipping points including ice sheet collapse, permafrost thaw, and rainforest dieback, and their trigger temperatures.\n\n## Interconnected Systems\n\nCrucially, the research shows how crossing one tipping point can cascade into others, potentially triggering runaway climate change.\n\n## Urgent Timeline\n\nSome tipping points could be reached within this decade at current warming rates, making immediate emissions reductions critical.\n\n## Policy Implications\n\nThe findings provide clear targets for climate policy and demonstrate the risks of exceeding 1.5°C of warming.",
+      "content": "An international team of climate scientists has published the most comprehensive assessment of 'climate tipping points'—thresholds where small changes in temperature trigger reinforcing feedback loops.\n\n## The Domino Effect\n\nThe study identifies nine active tipping points, including the collapse of the Greenland Ice Sheet and the dieback of the Amazon Rainforest.  Crucially, it models the 'teleconnections' between them: how freshwater from melting ice slows the Atlantic circulation, which in turn dries out the Amazon.\n\n## Critical Thresholds\n\nThe analysis warns that five of these tipping points, including the loss of tropical coral reefs and abrupt permafrost thaw, are likely to be crossed at 1.5°C of warming—a limit the world is rapidly approaching.\n\n## Irreversibility\n\nOnce triggered, these systems shift to a new state even if human emissions stop. For example, once permafrost thaw becomes self-sustaining (generating its own heat via bacterial decomposition), it cannot be re-frozen.\n\n## Policy Call to Action\n\nThe report argues that economic models vastly underestimate these risks. It calls for a 'state of planetary emergency' to prioritize immediate methane reduction, which is the fastest way to slow near-term warming.",
       "category": "science",
       "publishedAt": "2025-01-07T16:00:00Z",
-      "readingTime": 6,
+      "readingTime": 7,
       "imageUrl": "https://images.unsplash.com/photo-1569163139599-0f4517e36f51?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["climate", "environment", "research", "tipping-points"]
+      "tags": ["climate", "environment", "research", "tipping-points", "policy"]
     },
     {
       "slug": "cancer-detection-ai-system",
       "title": "AI System Detects Cancer With Higher Accuracy Than Human Doctors",
       "excerpt": "Machine learning algorithm identifies cancers earlier and more reliably than traditional methods.",
-      "content": "An AI diagnostic system has demonstrated unprecedented accuracy in detecting multiple types of cancer from routine medical scans.\n\n## Performance Results\n\nIn blind tests against expert radiologists, the AI detected cancers with 96% accuracy compared to 85% for human doctors, while producing fewer false positives.\n\n## Multi-Cancer Detection\n\nThe system can identify early signs of lung, breast, colorectal, and pancreatic cancers—often catching tumors before symptoms appear.\n\n## Clinical Integration\n\nHospitals are beginning to deploy the system to assist doctors, combining AI analysis with human expertise for optimal outcomes.\n\n## Lives Saved\n\nEarly detection dramatically improves cancer survival rates. This technology could save hundreds of thousands of lives annually.",
+      "content": "A new Deep Learning model trained on millions of mammograms and CT scans has demonstrated the ability to detect tumors years before they are visible to the human eye.\n\n## Pattern Recognition\n\nThe AI analyzes pixel-level anomalies in tissue density and vascularization that are too subtle for radiologists to perceive. In a double-blind study, the AI reduced false negatives (missed cancers) by 9% and false positives (false alarms) by 6%.\n\n## Multi-Modal Analysis\n\nUnlike previous tools, this system integrates patient history and genetic data with imaging. It calculates a holistic 'risk score' that guides doctors on whether to order a biopsy or simply monitor the patient.\n\n## Addressing the Workload Crisis\n\nWith a global shortage of radiologists, this tool acts as a triage system, filtering out the clear 'healthy' scans so doctors can focus their time on the complex, suspicious cases.\n\n## Clinical Integration\n\nThe system is currently being deployed in 50 NHS hospitals in the UK, with initial data suggesting it could increase early detection rates by 20%, significantly improving survival odds.",
       "category": "science",
       "publishedAt": "2025-01-07T11:00:00Z",
       "readingTime": 5,
       "imageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["cancer", "ai", "medicine", "diagnostics"]
+      "tags": ["cancer", "ai", "medicine", "diagnostics", "health-tech"]
     },
     {
       "slug": "dark-matter-detection-progress",
       "title": "Physicists Report Strongest Evidence Yet for Dark Matter Particle",
       "excerpt": "Underground detector records signals consistent with long-theorized weakly interacting particles.",
-      "content": "Scientists operating a deep underground detector have reported signals that may represent the first direct detection of dark matter particles.\n\n## The Detection\n\nThe detector recorded 23 events consistent with weakly interacting massive particles (WIMPs), the leading dark matter candidate.\n\n## Statistical Significance\n\nThe results exceed the threshold for statistical significance, though scientists emphasize that independent verification is essential.\n\n## What is Dark Matter\n\nDark matter accounts for 85% of the universe's mass but has never been directly detected. Understanding it is one of physics' greatest challenges.\n\n## Next Steps\n\nMultiple detector experiments worldwide are attempting to replicate the findings, which could fundamentally change our understanding of the universe.",
+      "content": "The XENONnT experiment, located deep beneath the Italian Apennines, has reported a statistically significant excess of events that could be the first direct observation of Dark Matter.\n\n## Searching for WIMPs\n\nThe detector uses a massive tank of liquid xenon. The theory is that 'Weakly Interacting Massive Particles' (WIMPs)—the leading candidate for dark matter—occasionally collide with a xenon nucleus, creating a tiny flash of light. The team detected 23 such flashes, significantly more than the expected background noise.\n\n## Ruling Out Interference\n\nThe detector is shielded by rock and water to block cosmic rays. The signal profile matches the predicted 'WIMP wind' caused by Earth moving through the galactic dark matter halo.\n\n## What This Means\n\nDark matter makes up 85% of the mass in the universe, holding galaxies together, yet its nature is a mystery. If confirmed, this would solve one of the biggest problems in cosmology and require an extension of the Standard Model of particle physics.\n\n## Verification Needed\n\nThe physics community is cautiously optimistic. Confirmation is now required from independent detectors like LUX-ZEPLIN in the US to rule out unknown instrument errors.",
       "category": "science",
       "publishedAt": "2025-01-06T15:00:00Z",
       "readingTime": 6,
       "imageUrl": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["physics", "dark-matter", "cosmology", "research"]
+      "tags": ["physics", "dark-matter", "cosmology", "research", "astrophysics"]
     },
     {
       "slug": "coral-reef-restoration-success",
       "title": "Revolutionary Coral Restoration Technique Revives Dead Reefs",
       "excerpt": "Scientists successfully regenerate coral ecosystems using lab-grown heat-resistant corals.",
-      "content": "A new coral restoration approach has successfully brought dead reef sections back to life using lab-grown, climate-resistant corals.\n\n## The Technique\n\nScientists bred corals that can withstand higher temperatures, then developed methods to rapidly establish them on degraded reefs.\n\n## Results\n\nTreated reef sections show 80% coral coverage after three years—comparable to healthy natural reefs—compared to zero recovery in control areas.\n\n## Scale-Up Potential\n\nThe technique can be applied at scale, offering hope for the world's rapidly degrading coral reef ecosystems.\n\n## Ecosystem Recovery\n\nAs corals return, so does the entire reef ecosystem—fish populations, biodiversity, and the coastal protection reefs provide.",
+      "content": "Marine scientists have successfully restored a bleached section of the Great Barrier Reef using a new technique called 'Assisted Evolution', offering a lifeline for these threatened ecosystems.\n\n## Selective Breeding for Heat\n\nResearchers bred coral colonies in the lab that had naturally survived previous heatwaves. By crossing these 'super-survivors' and exposing the larvae to gradually increasing temperatures, they accelerated the natural selection of heat-tolerance genes.\n\n## Micro-Fragmentation\n\nTo speed up growth, the team used 'micro-fragmentation'—breaking corals into tiny pieces, which stimulates a rapid healing response. These fragments grow 40 times faster than normal. When planted back on the reef, they fused together to form mature colonies in just three years.\n\n## Ecosystem Return\n\nThe restored reef patches have seen a return of fish and invertebrate populations, proving that the lab-grown corals can support a functional ecosystem. The structural complexity of the reef has been restored.\n\n## Global Scale-Up\n\nWhile successful locally, the challenge is scale. Automated 'coral planting robots' are now being developed to plant millions of heat-resistant larvae across thousands of kilometers of reef.",
       "category": "science",
       "publishedAt": "2025-01-06T10:00:00Z",
-      "readingTime": 5,
+      "readingTime": 6,
       "imageUrl": "https://images.unsplash.com/photo-1546026423-cc4642628d2b?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["coral", "ocean", "conservation", "climate"]
+      "tags": ["coral", "ocean", "conservation", "climate", "marine-biology"]
     },
     {
       "slug": "aging-reversal-research",
       "title": "Scientists Reverse Biological Age in Human Cells",
       "excerpt": "Research demonstrates that cellular aging can be partially reversed without causing cancer.",
-      "content": "Researchers have successfully reversed markers of aging in human cells, bringing us closer to potential anti-aging therapies.\n\n## The Approach\n\nUsing a combination of reprogramming factors, scientists reset cellular aging clocks without returning cells to an embryonic state that could cause cancer.\n\n## Measured Results\n\nTreated cells showed biological ages 10-20 years younger than their actual age, with improved function and reduced inflammation markers.\n\n## Safety Progress\n\nPrevious reprogramming attempts often caused cancer. This new partial reprogramming approach appears to avoid that risk.\n\n## Path to Treatment\n\nWhile human trials are years away, these results suggest that age-related diseases could eventually be treated by reversing underlying cellular aging.",
+      "content": "In a major step for longevity research, scientists at Harvard have used 'epigenetic reprogramming' to restore the youthful function of aging human cells, effectively turning back their biological clock.\n\n## The Information Theory of Aging\n\nThe study supports the theory that aging is a loss of information—scratches on the cellular CD—rather than just wear and tear. By using three of the four 'Yamanaka factors' (proteins that control cell identity), the team rebooted the cells' epigenetic markers. \n\n## Vision Restoration\n\nIn tests on mice with age-related vision loss, the treatment successfully regenerated damaged optic nerves and restored vision, a feat previously thought impossible in mammals. The cells 'remembered' how to be young again.\n\n## Safety Breakthrough\n\nPrevious attempts wiped the cell's identity completely, turning them into stem cells and causing tumors. This new 'partial reprogramming' protocol rejuvenates the cell while allowing it to retain its identity as a skin cell or eye cell.\n\n## Human Applications\n\nResearchers are preparing for the first primate trials. If successful, this could lead to treatments for age-related diseases like glaucoma, Alzheimer's, and heart disease, treating the root cause (aging) rather than the symptoms.",
       "category": "science",
       "publishedAt": "2025-01-05T14:00:00Z",
-      "readingTime": 6,
+      "readingTime": 7,
       "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=450&fit=crop",
       "author": "News Hub AI",
-      "tags": ["aging", "biology", "medicine", "longevity"]
+      "tags": ["aging", "biology", "medicine", "longevity", "genetics"]
     }
   ]
 }
